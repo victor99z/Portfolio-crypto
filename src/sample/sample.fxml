@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,13 +14,29 @@
    <children>
       <Pane prefHeight="416.0" prefWidth="444.0" style="-fx-background-color: #0111;">
          <children>
-            <Pane prefHeight="93.0" prefWidth="444.0" style="-fx-background-color: #111;">
+            <Pane prefHeight="93.0" prefWidth="444.0" style="-fx-background-color: #1b56b5;">
                <children>
                   <Label layoutX="177.0" layoutY="29.0" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="29.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="28.0" layoutY="125.0" prefHeight="256.0" prefWidth="388.0">
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="180.0" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Cadastrar" textFill="WHITE" />
+                  <JFXButton buttonType="RAISED" layoutX="245.0" layoutY="180.0" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Entrar" textFill="WHITE" />
+                  <JFXTextField layoutX="12.0" layoutY="36.0" prefHeight="45.0" prefWidth="365.0" promptText="Username">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField layoutX="14.0" layoutY="108.0" prefHeight="45.0" prefWidth="365.0" promptText="Password">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXPasswordField>
                </children>
             </Pane>
          </children></Pane>
