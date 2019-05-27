@@ -26,7 +26,7 @@
             <Pane layoutX="28.0" layoutY="125.0" prefHeight="256.0" prefWidth="388.0">
                <children>
                   <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="180.0" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Cadastrar" textFill="WHITE" />
-                  <JFXButton buttonType="RAISED" layoutX="245.0" layoutY="180.0" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Entrar" textFill="WHITE" />
+                  <JFXButton fx:id="btn" buttonType="RAISED" layoutX="245.0" layoutY="180.0" onAction="#display" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Entrar" textFill="WHITE" />
                   <JFXTextField layoutX="12.0" layoutY="36.0" prefHeight="45.0" prefWidth="365.0" promptText="Username">
                      <font>
                         <Font size="16.0" />
