@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.loginController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
@@ -50,7 +50,7 @@
                      <children>
                         <FlowPane alignment="CENTER" prefHeight="66.0" prefWidth="508.0">
                            <children>
-                              <JFXButton fx:id="cadBtn" buttonType="RAISED" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Cadastrar" textFill="WHITE" />
+                              <JFXButton fx:id="cadBtn" buttonType="RAISED" onAction="#switch_cad" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: #1b56b5;" text="Cadastrar" textFill="WHITE" />
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">

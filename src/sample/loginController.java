@@ -4,11 +4,14 @@ import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class Controller {
+public class loginController {
 
     @FXML
     private StackPane stackPane;
@@ -29,8 +32,21 @@ public class Controller {
     private JFXButton loginBtn;
 
     @FXML
+    private switchScene switchScene;
+
+    @FXML
+    private Stage stage;
+
+
+    @FXML
+    public void initialize(){
+        this.stage = (Stage) stackPane.getScene().getWindow();
+        this.switchScene = new switchScene(this.stage);
+    }
+
+    @FXML
     void display(ActionEvent event) {
-        System.out.println("Nice");
+        System.out.println("Nicee");
         if(InputUsername.getText().equals("admin") && InputPassword.getText().equals("admin")){
             String fullName = InputUsername.getText() + " : " + InputPassword.getText() + "\nDeu bom";
             MessageDialog(fullName,InputUsername.getText());
@@ -38,6 +54,13 @@ public class Controller {
             String fullName = InputUsername.getText() + " : " + InputPassword.getText() + "\nDeu ruim";
             MessageDialog(fullName,InputUsername.getText());
         }
+
+    }
+
+    @FXML
+    void switch_cad(ActionEvent event){
+        switchScene.switch_("register");
+        //stage.close();
 
     }
 
