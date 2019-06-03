@@ -1,8 +1,28 @@
 package com.api;
 
-public class MainTestApi {
+public class MainTestApi extends Thread{
+
+    // Thread para fazer requisicao da api a cada 5 seg.
+    //
+
+    public MainTestApi(String url){
+        run(url);
+    }
+
+    public void run(String url){
+        while(true){
+            try {
+                ApiReader response = new ApiReader(url);
+                System.out.println(response);
+                sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
-        ApiReader response1 = new ApiReader("https://api.coincap.io/v2/markets/?exchangeId=binance&baseSymbol=TUSD");
-        System.out.println(response1);
+        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance&baseSymbol=TUSD");
     }
 }
