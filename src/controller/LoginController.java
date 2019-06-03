@@ -1,4 +1,4 @@
-package sample;
+package controller;
 
 import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
@@ -58,7 +58,7 @@ public class LoginController {
     void switch_cad(ActionEvent event){
         this.stage = (Stage) stackPane.getScene().getWindow();
         this.switchScene = new SwitchScene(this.stage);
-        switchScene.switch_("registerScreen");
+        switchScene.switch_("../view/registerScreen");
         //stage.close();
 
     }

@@ -1,4 +1,4 @@
-package sample;
+package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -28,8 +28,8 @@ public class RegisterController {
     @FXML
     void showDialog(ActionEvent event) {
         JFXDialogLayout dl = new JFXDialogLayout();
-        dl.setBody(new Text("KKEAEMEN"));
-        JFXButton bt_dis = new JFXButton("Java Lishu");
+        dl.setBody(new Text("HAEUAHEUAE"));
+        JFXButton bt_dis = new JFXButton("Java daora");
 
         JFXDialog dialog = new JFXDialog(stackPane,dl,JFXDialog.DialogTransition.CENTER);
 
@@ -47,7 +47,7 @@ public class RegisterController {
     void switch_cad(ActionEvent event){
         this.stage = (Stage) stackPane.getScene().getWindow();
         this.switchScene = new SwitchScene(this.stage);
-        switchScene.switch_("loginScreen");
+        switchScene.switch_("../view/loginScreen");
         //stage.close();
 
     }

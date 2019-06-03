@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +18,7 @@ public class Main extends Application {
         //switchScene = new switchScene(this.stage);
         primaryStage.setTitle("Scenebuilder mito");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("loginScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/loginScreen.fxml"));
         System.out.println("AEAEAE");
         Parent root = (Parent) loader.load();
         primaryStage.setScene(new Scene(root));
