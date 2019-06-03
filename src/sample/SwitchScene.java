@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class switchScene {
+public class SwitchScene {
 
     private final Stage stage;
 
-    public switchScene(Stage targ){
+    public SwitchScene(Stage targ){
         this.stage = targ;
     }
     public void switch_(String fxmlFile) {
@@ -25,11 +25,3 @@ public class switchScene {
         }
     }
 }
-/*if (fxmlFile.equals("calculator.fxml")) {
-                BasicCalculatorView controller = (BasicCalculatorView) loader.getController();
-                controller.setModel(new BasicCalculatorModelTest(controller));
-                controller.setLogic(this);
-            } else if (fxmlFile.equals("TestSwitch.fxml")) {
-                TestSwitch controller = (TestSwitch) loader.getController();
-                controller.setLogic(this);
-            }*/

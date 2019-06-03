@@ -7,14 +7,20 @@ import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class registerController {
+public class RegisterController {
 
     @FXML
-    private StackPane anchorDiag;
+    private Stage stage;
+
+    @FXML
+    private StackPane stackPane;
+
+    @FXML
+    private SwitchScene switchScene;
 
     @FXML
     private JFXToggleButton dialogToggle;
@@ -25,7 +31,7 @@ public class registerController {
         dl.setBody(new Text("KKEAEMEN"));
         JFXButton bt_dis = new JFXButton("Java Lishu");
 
-        JFXDialog dialog = new JFXDialog(anchorDiag,dl,JFXDialog.DialogTransition.CENTER);
+        JFXDialog dialog = new JFXDialog(stackPane,dl,JFXDialog.DialogTransition.CENTER);
 
         bt_dis.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -34,7 +40,20 @@ public class registerController {
             }
         });
         dl.setActions(bt_dis);
-        dialog.show(anchorDiag);
+        dialog.show(stackPane);
     }
 
+    @FXML
+    void switch_cad(ActionEvent event){
+        this.stage = (Stage) stackPane.getScene().getWindow();
+        this.switchScene = new SwitchScene(this.stage);
+        switchScene.switch_("loginScreen");
+        //stage.close();
+
+    }
+
+    @FXML
+    void display(ActionEvent event) {
+        System.out.println("Nicee");
+    }
 }

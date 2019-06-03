@@ -4,14 +4,12 @@ import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class loginController {
+public class LoginController {
 
     @FXML
     private StackPane stackPane;
@@ -32,7 +30,7 @@ public class loginController {
     private JFXButton loginBtn;
 
     @FXML
-    private switchScene switchScene;
+    private SwitchScene switchScene;
 
     @FXML
     private Stage stage;
@@ -40,8 +38,7 @@ public class loginController {
 
     @FXML
     public void initialize(){
-        this.stage = (Stage) stackPane.getScene().getWindow();
-        this.switchScene = new switchScene(this.stage);
+
     }
 
     @FXML
@@ -59,7 +56,9 @@ public class loginController {
 
     @FXML
     void switch_cad(ActionEvent event){
-        switchScene.switch_("register");
+        this.stage = (Stage) stackPane.getScene().getWindow();
+        this.switchScene = new SwitchScene(this.stage);
+        switchScene.switch_("registerScreen");
         //stage.close();
 
     }
@@ -86,6 +85,4 @@ public class loginController {
         dl.setActions(bt_dis);
         dialog.show(stackPane);
     }
-
-
 }
