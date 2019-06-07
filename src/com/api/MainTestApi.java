@@ -3,7 +3,6 @@ package com.api;
 public class MainTestApi extends Thread{
 
     // Thread para fazer requisicao da api a cada 5 seg.
-    //
 
     public MainTestApi(String url){
         run(url);
@@ -14,7 +13,7 @@ public class MainTestApi extends Thread{
             try {
                 ApiReader response = new ApiReader(url);
                 System.out.println(response);
-                sleep(5000);
+                sleep(60000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
