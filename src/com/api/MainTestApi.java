@@ -2,8 +2,6 @@ package com.api;
 
 import com.google.gson.*;
 
-import java.util.Iterator;
-
 public class MainTestApi extends Thread{
     private String url;
 
@@ -17,6 +15,7 @@ public class MainTestApi extends Thread{
         public void run() {
             while(true){
                 try {
+
                     ApiReader response = new ApiReader(url); // Faz a chamada da API, recebe uma String no formato JSON
                     Gson gson = new Gson(); // Cria o objeto json para manipularmos a String
                     DataArray dataarray = gson.fromJson(response.toString(),DataArray.class); //
@@ -34,6 +33,6 @@ public class MainTestApi extends Thread{
     };
 
     public static void main(String[] args) {
-        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance");
+        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance&limit=5");
     }
 }

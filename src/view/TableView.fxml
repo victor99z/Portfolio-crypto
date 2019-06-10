@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
    <children>
-      <Pane>
+      <Pane onMouseClicked="#callApi">
          <children>
-            <JFXButton fx:id="BtnAction" layoutX="782.0" layoutY="637.0" onAction="#setupGroupView" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: #21f2be;" text="clica ae">
-               <font>
-                  <Font name="Consolas Bold Italic" size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXTreeTableView layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="760.0" />
+            <Label fx:id="label1" layoutX="21.0" layoutY="216.0" prefHeight="110.0" prefWidth="417.0" text="Label" />
+            <Label fx:id="label2" layoutX="21.0" layoutY="388.0" prefHeight="142.0" prefWidth="435.0" text="Label" />
+            <JFXButton layoutX="812.0" layoutY="518.0" onAction="#callApi" prefHeight="59.0" prefWidth="100.0" style="-fx-background-color: #2bdcef;" text="CALL API" fx:id="xama" />
          </children>
       </Pane>
    </children>

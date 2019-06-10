@@ -2,17 +2,17 @@ package com.api;
 
 public class data {
 
-    String exchangeId;
-    String rank;
-    String baseSymbol;
-    String baseId;
-    String quoteSymbol;
-    String priceQuote;
-    String priceUsd;
-    String volumeUsd24Hr;
-    String percentExchangeVolume;
-    String tradesCount24Hr;
-    long update;
+    public String exchangeId;
+    public String rank;
+    public String baseSymbol;
+    public String baseId;
+    public String quoteSymbol;
+    public String priceQuote;
+    public String priceUsd;
+    public String volumeUsd24Hr;
+    public String percentExchangeVolume;
+    public String tradesCount24Hr;
+    public long update;
 
     public data(String exchangeId,
                 String rank,
