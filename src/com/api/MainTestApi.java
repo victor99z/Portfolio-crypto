@@ -1,27 +1,39 @@
 package com.api;
 
-public class MainTestApi extends Thread{
+import com.google.gson.*;
 
-    // Thread para fazer requisicao da api a cada 5 seg.
+import java.util.Iterator;
+
+public class MainTestApi extends Thread{
+    private String url;
 
     public MainTestApi(String url){
-        run(url);
+        this.url = url;
+        t1.start();
     }
 
-    public void run(String url){
-        while(true){
-            try {
-                ApiReader response = new ApiReader(url);
-                System.out.println(response);
-                sleep(60000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    Thread t1 = new Thread(){
+        @Override
+        public void run() {
+            while(true){
+                try {
+                    ApiReader response = new ApiReader(url); // Faz a chamada da API, recebe uma String no formato JSON
+                    Gson gson = new Gson(); // Cria o objeto json para manipularmos a String
+                    DataArray dataarray = gson.fromJson(response.toString(),DataArray.class); //
+
+                    for(data sc: dataarray.data){
+                        System.out.printf("[%s/%s] : %s\n",sc.baseSymbol,sc.quoteSymbol,sc.priceQuote);
+                    }
+
+                    sleep(60000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-
-    }
+    };
 
     public static void main(String[] args) {
-        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance&baseSymbol=TUSD");
+        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance");
     }
 }

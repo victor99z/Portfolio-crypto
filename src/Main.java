@@ -10,27 +10,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        /*Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();*/
         this.stage = primaryStage ;
-        //switchScene = new switchScene(this.stage);
-        primaryStage.setTitle("Scenebuilder mito");
+        primaryStage.setTitle("TEST WINDOW");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/loginScreen.fxml"));
-        System.out.println("AEAEAE");
-        Parent root = (Parent) loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/tableView.fxml"));
+        Parent root = loader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        //switchScene("register");
 
-        stage.setOnHidden(event -> {
-            System.out.println("Sai");
-        });
-        stage.setOnShown(event -> {
-            System.out.println("Entra");
-        });
+
     }
 
 

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.TableViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
+   <children>
+      <Pane>
+         <children>
+            <JFXButton fx:id="BtnAction" layoutX="782.0" layoutY="637.0" onAction="#setupGroupView" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: #21f2be;" text="clica ae">
+               <font>
+                  <Font name="Consolas Bold Italic" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXTreeTableView layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="760.0" />
+         </children>
+      </Pane>
+   </children>
+</StackPane>
