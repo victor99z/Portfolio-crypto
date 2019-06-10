@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.*;
+import core.UserLogin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController extends ControllerClassType{
 
     @FXML
     private StackPane stackPane;
@@ -44,23 +45,17 @@ public class LoginController {
     @FXML
     void display(ActionEvent event) {
         System.out.println("Nicee");
-        if(InputUsername.getText().equals("admin") && InputPassword.getText().equals("admin")){
-            String fullName = InputUsername.getText() + " : " + InputPassword.getText() + "\nDeu bom";
-            MessageDialog(fullName,InputUsername.getText());
+        UserLogin ul = new UserLogin(InputUsername.getText(), InputPassword.getText());
+        if(ul.getLoginState() == true){
+            super.switch_cad(event,stackPane,"RootPane",false);
         }else{
-            String fullName = InputUsername.getText() + " : " + InputPassword.getText() + "\nDeu ruim";
-            MessageDialog(fullName,InputUsername.getText());
+            MessageDialog(InputUsername.getText() + ": " + InputPassword.getText(),InputUsername.getText());
         }
-
     }
 
     @FXML
     void switch_cad(ActionEvent event){
-        this.stage = (Stage) stackPane.getScene().getWindow();
-        this.switchScene = new SwitchScene(this.stage);
-        switchScene.switch_("../view/registerScreen");
-        //stage.close();
-
+        super.switch_cad(event,stackPane,"registerScreen",false);
     }
 
     void MessageDialog(String info,String name){

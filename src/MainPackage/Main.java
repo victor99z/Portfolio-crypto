@@ -1,9 +1,15 @@
+package MainPackage;
+
+import animatefx.animation.FadeIn;
+import animatefx.animation.SlideInDown;
+import animatefx.animation.SlideInUp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import com.sun.javafx.scene.control.behavior.*;
 public class Main extends Application {
 
     private Stage stage;
@@ -18,12 +24,17 @@ public class Main extends Application {
         //switchScene = new switchScene(this.stage);
         primaryStage.setTitle("Scenebuilder mito");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/loginScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loginScreen.fxml"));
         System.out.println("AEAEAE");
         Parent root = (Parent) loader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        //primaryStage.setFullScreen(true);
         //switchScene("register");
+
+        new SlideInDown(root).play();
+
+
 
         stage.setOnHidden(event -> {
             System.out.println("Sai");

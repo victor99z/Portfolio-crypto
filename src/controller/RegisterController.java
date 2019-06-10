@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class RegisterController {
+public class RegisterController extends ControllerClassType {
 
     @FXML
     private Stage stage;
@@ -45,11 +45,7 @@ public class RegisterController {
 
     @FXML
     void switch_cad(ActionEvent event){
-        this.stage = (Stage) stackPane.getScene().getWindow();
-        this.switchScene = new SwitchScene(this.stage);
-        switchScene.switch_("../view/loginScreen");
-        //stage.close();
-
+        super.switch_cad(event,stackPane,"loginScreen",false);
     }
 
     @FXML

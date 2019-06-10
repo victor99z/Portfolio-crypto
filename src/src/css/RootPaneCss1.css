@@ -1,7 +1,7 @@
 #tabPane {
-    -fx-tab-min-height: 7.5em;
+    -fx-tab-min-height: 20em;
     /* 24 */
-    -fx-tab-max-height: 7.5em;
+    -fx-tab-max-height: 30em;
     /* 24 */
 
     -fx-tab-min-width: 3em;
@@ -17,28 +17,40 @@
 
 .tab{
 
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #222f3c;
     -fx-background-insets: 0.0;
     -fx-background-radius: 0.0;
     -fx-padding: 0 30 0 30;
+
+    -fx-border-width: 5 0 0 0;
+    -fx-border-color: #1c2732;
 }
 
 .tab:selected
 {
-    -fx-background-color: #FAFCFB;
+    -fx-background-color: #1c2732;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 5 0 0 0;
     -fx-border-color: #3FE387;
+    color: #FFF;
 
 
+}
+
+#TabTitle{
+color: #bbbbbb;
+}
+
+.tab:selected *{
+
+    color: #FFF;
 
 }
 
 .tab:focused
 {
   -fx-focus-color: transparent;
-
 
 }
 
