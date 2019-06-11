@@ -1,44 +1,69 @@
 package controller;
 
+import com.api.ApiReader;
 import com.api.*;
 import com.google.gson.Gson;
-import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import java.awt.event.MouseEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
-public class TableViewController extends Thread{
 
-    private ApiReader response;
+public class TableViewController{
 
+    private DataArray dataarray;
     @FXML
-    private Label label1;
+    private TableView<data> tvDados;
 
-    @FXML
-    private Label label2;
+    public void initialize(){
 
-    private JFXButton xama;
+        TableColumn<data, String> col1 = new TableColumn<>("#");
+        TableColumn<data, String> col2 = new TableColumn<>("#1");
+        TableColumn<data, String> col3 = new TableColumn<>("#2");
+        TableColumn<data, String> col4 = new TableColumn<>("#3");
+        TableColumn<data, String> col5 = new TableColumn<>("#4");
+        TableColumn<data, String> col6 = new TableColumn<>("#5");
+        TableColumn<data, String> col7 = new TableColumn<>("#6");
+        TableColumn<data, String> col8 = new TableColumn<>("#8");
+        TableColumn<data, String> col9 = new TableColumn<>("#9");
+        TableColumn<data, String> col10 = new TableColumn<>("0#");
 
-    @FXML
-    void callApi(ActionEvent event) {
+        col1.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().exchangeId));
+        col2.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().rank));
+        col3.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseSymbol));
+        col4.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseId));
+        col5.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().quoteSymbol));
+        col6.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().priceQuote));
+        col7.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().priceUsd));
+        col8.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().volumeUsd24Hr));
+        col9.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().percentExchangeVolume));
+        col10.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().tradesCount24Hr));
+
+        tvDados.getColumns().addAll(col1,col2,col3,col4,col5,col6,col7,col8,col9,col10);
+
         t1.start();
+
+    }
+
+    public void getResponse(){
+        ApiReader response = new ApiReader("https://api.coincap.io/v2/markets/?exchangeId=binance&limit=10");
+        Gson gson = new Gson();
+        this.dataarray = gson.fromJson(response.toString(),DataArray.class);
     }
 
     Thread t1 = new Thread(){
-        public void run(){
+        @Override
+        public void run() {
             while(true){
-                try{
-                    response = new ApiReader("https://api.coincap.io/v2/markets/?exchangeId=binance&limit=5");
-                    Gson gson = new Gson();
-                    DataArray dataarray = gson.fromJson(response.toString(),DataArray.class);
-                    for(data sc : dataarray.data){
-                        label1.setText(sc.quoteSymbol+"/"+sc.baseSymbol);
-                        label2.setText("price : "+sc.priceQuote);
+                try {
+
+                    getResponse();
+                    tvDados.getItems().clear();
+                    for(data dt : dataarray.data) {
+                        tvDados.getItems().addAll(dt);
                     }
                     sleep(6000);
-                }catch(Exception e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }

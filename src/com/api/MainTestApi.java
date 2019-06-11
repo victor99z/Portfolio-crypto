@@ -33,6 +33,6 @@ public class MainTestApi extends Thread{
     };
 
     public static void main(String[] args) {
-        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance&limit=5");
+        MainTestApi response1 = new MainTestApi("https://api.coincap.io/v2/markets/?exchangeId=binance&limit=2");
     }
 }
