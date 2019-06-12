@@ -4,8 +4,8 @@
 
 ***
 
-### ..* Libs usadas:
-##### + GSON
-##### + Jfoenix
-##### + JavaFx
+### Libs usadas:
++ GSON
++ Jfoenix
++ JavaFx
 
