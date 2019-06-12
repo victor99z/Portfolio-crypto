@@ -2,5 +2,5 @@
 
 #POEM OS COMANDOS AQUI
 
-### *Libs usadas
-#### -GSON, Jfoenix, 
+### ..*Libs usadas
+#### *GSON, Jfoenix, 
