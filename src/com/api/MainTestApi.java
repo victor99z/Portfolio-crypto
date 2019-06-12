@@ -20,7 +20,7 @@ public class MainTestApi extends Thread{
                     Gson gson = new Gson(); // Cria o objeto json para manipularmos a String
                     DataArray dataarray = gson.fromJson(response.toString(),DataArray.class); //
 
-                    for(data sc: dataarray.data){
+                    for(DataExchange sc: dataarray.data){
                         System.out.printf("[%s/%s] : %s\n",sc.baseSymbol,sc.quoteSymbol,sc.priceQuote);
                     }
 

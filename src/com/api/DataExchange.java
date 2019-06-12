@@ -1,6 +1,6 @@
 package com.api;
 
-public class data {
+public class DataExchange {
 
     public String exchangeId;
     public String rank;
@@ -14,17 +14,17 @@ public class data {
     public String tradesCount24Hr;
     public long update;
 
-    public data(String exchangeId,
-                String rank,
-                String baseSymbol,
-                String baseId,
-                String quoteSymbol,
-                String priceQuote,
-                String priceUsd,
-                String volumeUsd24Hr,
-                String percentExchangeVolume,
-                String tradesCount24Hr,
-                long update){
+    public DataExchange(String exchangeId,
+                        String rank,
+                        String baseSymbol,
+                        String baseId,
+                        String quoteSymbol,
+                        String priceQuote,
+                        String priceUsd,
+                        String volumeUsd24Hr,
+                        String percentExchangeVolume,
+                        String tradesCount24Hr,
+                        long update){
         this.exchangeId = exchangeId;
         this.rank = rank;
         this.baseSymbol = baseSymbol;
@@ -40,7 +40,7 @@ public class data {
 
     @Override
     public String toString() {
-        return "data{" +
+        return "DataExchange{" +
                 "exchangeId='" + exchangeId + '\'' +
                 ", rank='" + rank + '\'' +
                 ", baseSymbol='" + baseSymbol + '\'' +
