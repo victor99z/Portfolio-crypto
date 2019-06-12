@@ -15,15 +15,19 @@ public class SwitchScene {
     public SwitchScene(Stage targ){
         this.stage = targ;
     }
-    public void switch_(String fxmlFile) {
+    public ControllerClassType switch_(String fxmlFile) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/"+fxmlFile+".fxml"));
         Parent root;
+        ControllerClassType controller = new ControllerClassType();
         try {
             root = (Parent) loader.load();
+            controller = (ControllerClassType) loader.getController();
             this.stage.setScene(new Scene(root));
             new SlideInUp(root).play();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return controller;
     }
+
 }

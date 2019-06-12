@@ -39,6 +39,9 @@ public class Main extends Application {
         stage.setOnHidden(event -> {
             System.out.println("Sai");
         });
+        stage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
         stage.setOnShown(event -> {
             System.out.println("Entra");
         });

@@ -1,22 +1,43 @@
 #tabPane {
-    -fx-tab-min-height: 20em;
-    /* 24 */
-    -fx-tab-max-height: 30em;
-    /* 24 */
+    /*24*/
+    /*
+    -fx-tab-min-height: 10em;
+    -fx-tab-max-height: 10em;
+    */
+    -fx-tab-min-width: 6em;
+    -fx-tab-max-width: 6em;
 
-    -fx-tab-min-width: 3em;
-    -fx-tab-max-width: 3em;
-    -fx-padding: 0 -4 -4 0
+    /*-fx-padding: 0 -4 -4 0;*/
 }
+
+/*
+    tab bar
+*/
+
+.jfx-tab-pane .headers-region {
+    -fx-background-color: #222f3c;/*#1b75bc*/
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #222f3c;/*#1b75bc*/
+}
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: #c1c1c1;
+    -fx-stroke-width: 2pt;
+}
+.jfx-tab-pane .tab-header-area .jfx-rippler{
+    -jfx-rippler-fill:#3FE387;
+}
+/*
+    End Tab Bar
+*/
+
 .tab .tab-label {
-    -fx-background-color: transparent;
     -fx-alignment: CENTER;
     -fx-text-fill: #EBEAF0;
 
 }
 
 .tab{
-
     -fx-background-color: #222f3c;
     -fx-background-insets: 0.0;
     -fx-background-radius: 0.0;
@@ -24,18 +45,16 @@
 
     -fx-border-width: 5 0 0 0;
     -fx-border-color: #1c2732;
+    -fx-fill: #c2c2c2;
 }
 
-.tab:selected
-{
+.tab:selected{
     -fx-background-color: #1c2732;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 5 0 0 0;
     -fx-border-color: #3FE387;
-    color: #FFF;
-
-
+    -fx-fill: #FFF;
 }
 
 #TabTitle{
