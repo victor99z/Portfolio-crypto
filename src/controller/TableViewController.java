@@ -8,13 +8,13 @@ import javafx.scene.control.TableColumn;
 public class TableViewController extends TableRoot {
 
     public TableViewController(){
-        super("https://api.coincap.io/v2/markets?exchangeId=binance&baseId=bitcoin&limit=5");
+        super("https://api.coincap.io/v2/markets?exchangeId=binance&quoteId=tether&limit=50");
     }
 
     public void initialize(){
 
 
-        TableColumn<DataExchange, String> col2 = new TableColumn<>("#");
+        TableColumn<DataExchange, String> col2 = new TableColumn<>("Rank");
         TableColumn<DataExchange, String> col3 = new TableColumn<>("Symbol");
         TableColumn<DataExchange, String> col4 = new TableColumn<>("Nome");
         TableColumn<DataExchange, String> col5 = new TableColumn<>("Par");
