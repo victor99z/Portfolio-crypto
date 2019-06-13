@@ -1,12 +1,11 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.*;
+import core.UserLogin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,16 +13,44 @@ import javafx.stage.Stage;
 public class RegisterController extends ControllerClassType {
 
     @FXML
-    private Stage stage;
-
-    @FXML
     private StackPane stackPane;
 
     @FXML
-    private SwitchScene switchScene;
+    private JFXTextField userField;
 
     @FXML
-    private JFXToggleButton dialogToggle;
+    private JFXPasswordField userPasswordField;
+
+    @FXML
+    private JFXButton cadBtn;
+
+    @FXML
+    private JFXButton loginBtn;
+
+    @FXML
+    private JFXTextField emailField;
+
+    @FXML
+    private Label titleLabel;
+
+    private UserLogin register;
+
+    public void initialize(){
+        register = new UserLogin();
+    }
+
+    @FXML
+    void display(ActionEvent event) {
+        if(!register.getLoginState() && register.getGs() == null){
+            if(register.writeJSON(emailField.getText(),userField.getText(),userPasswordField.getText())){
+                MessageDialog(stackPane,"Cadastrado com sucesso!","Cadastro");
+            }else{
+                MessageDialog(stackPane,"Cadastrado deu ruin!","Cadastro");
+            }
+        }else{
+            MessageDialog(stackPane,"Cadastrado ja existe","Cadastro");
+        }
+    }
 
     @FXML
     void showDialog(ActionEvent event) {
@@ -48,8 +75,4 @@ public class RegisterController extends ControllerClassType {
         super.switch_cad(event,stackPane,"loginScreen",false);
     }
 
-    @FXML
-    void display(ActionEvent event) {
-        System.out.println("Nicee");
-    }
 }

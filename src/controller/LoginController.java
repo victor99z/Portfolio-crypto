@@ -1,5 +1,7 @@
 package controller;
 
+import api.DataArray;
+import com.google.gson.Gson;
 import com.jfoenix.controls.*;
 import core.UserLogin;
 import javafx.event.ActionEvent;
@@ -9,6 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class LoginController extends ControllerClassType{
 
@@ -36,20 +42,19 @@ public class LoginController extends ControllerClassType{
     @FXML
     private Stage stage;
 
+    private UserLogin login;
 
     @FXML
     public void initialize(){
-
+        login=new UserLogin();
     }
 
     @FXML
     void display(ActionEvent event) {
-        System.out.println("Nicee");
-        UserLogin ul = new UserLogin(InputUsername.getText(), InputPassword.getText());
-        if(ul.getLoginState() == true){
+        if(login.checkLoginMatches(InputUsername.getText(), InputPassword.getText())){
             super.switch_cad(event,stackPane,"RootPane",false);
         }else{
-            MessageDialog(InputUsername.getText() + ": " + InputPassword.getText(),InputUsername.getText());
+            MessageDialog(stackPane,"Usuário ou senha incorretos","Erro!");
         }
     }
 
@@ -58,26 +63,4 @@ public class LoginController extends ControllerClassType{
         super.switch_cad(event,stackPane,"registerScreen",false);
     }
 
-    void MessageDialog(String info,String name){
-
-        System.out.println("Noice");
-        titleLabel.setText(name);
-
-
-        JFXDialogLayout dl = new JFXDialogLayout();
-        dl.setHeading(new Text("KK eae men"));
-        dl.setBody(new Text(info));
-        JFXButton bt_dis = new JFXButton("BLZ");
-
-        JFXDialog dialog = new JFXDialog(stackPane,dl,JFXDialog.DialogTransition.CENTER);
-
-        bt_dis.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                dialog.close();
-            }
-        });
-        dl.setActions(bt_dis);
-        dialog.show(stackPane);
-    }
 }

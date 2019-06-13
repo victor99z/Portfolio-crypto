@@ -1,5 +1,6 @@
 package controller;
 
+import animatefx.animation.SlideInDown;
 import animatefx.animation.SlideInUp;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,7 +24,7 @@ public class SwitchScene {
             root = (Parent) loader.load();
             controller = (ControllerClassType) loader.getController();
             this.stage.setScene(new Scene(root));
-            new SlideInUp(root).play();
+            new SlideInDown(root).play();
         } catch (IOException e) {
             e.printStackTrace();
         }

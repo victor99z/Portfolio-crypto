@@ -16,21 +16,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        /*Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();*/
-        this.stage = primaryStage ;
-        //switchScene = new switchScene(this.stage);
-        primaryStage.setTitle("Scenebuilder mito");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loginScreen.fxml"));
+        this.stage = primaryStage ;//pegar o stage
+        primaryStage.setTitle("Scenebuilder mito");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loginScreen.fxml"));//carregar a primeira tela
         System.out.println("AEAEAE");
         Parent root = (Parent) loader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        //primaryStage.setFullScreen(true);
-        //switchScene("register");
 
         new SlideInDown(root).play();
 
@@ -52,3 +45,18 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
+/*
+Rascunho (não eh relevante)
+
+/*Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+
+switchScene = new switchScene(this.stage);
+
+primaryStage.setFullScreen(true);
+switchScene("register");
+*/

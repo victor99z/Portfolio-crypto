@@ -30,12 +30,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField fx:id="InputUsername" prefHeight="45.0" prefWidth="365.0" promptText="Username" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="userField" prefHeight="45.0" prefWidth="365.0" promptText="Username" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="InputPassword" prefHeight="45.0" prefWidth="365.0" promptText="Password" GridPane.rowIndex="2">
+                  <JFXPasswordField fx:id="userPasswordField" prefHeight="45.0" prefWidth="365.0" promptText="Password" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Insets />
                      </opaqueInsets>
                   </GridPane>
-                  <JFXTextField fx:id="InputUsername1" prefHeight="45.0" prefWidth="365.0" promptText="e-mail">
+                  <JFXTextField fx:id="emailField" prefHeight="45.0" prefWidth="365.0" promptText="e-mail">
                      <font>
                         <Font size="16.0" />
                      </font>

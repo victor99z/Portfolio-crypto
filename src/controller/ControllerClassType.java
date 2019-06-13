@@ -1,13 +1,18 @@
 package controller;
 
 import animatefx.animation.SlideInUp;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,6 +74,25 @@ public class ControllerClassType {
         }
 
 
+    }
+
+    void MessageDialog(StackPane stackPane,String info,String name){
+        //titleLabel.setText(name);
+        JFXDialogLayout dl = new JFXDialogLayout();
+        dl.setHeading(new Text(name));
+        dl.setBody(new Text(info));
+        JFXButton bt_dis = new JFXButton("BLZ");
+
+        JFXDialog dialog = new JFXDialog(stackPane,dl,JFXDialog.DialogTransition.CENTER);
+
+        bt_dis.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+        dl.setActions(bt_dis);
+        dialog.show(stackPane);
     }
 
 }
