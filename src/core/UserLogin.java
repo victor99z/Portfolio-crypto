@@ -22,13 +22,14 @@ public class UserLogin {
 
     public void setUserLogin() {
         this.gs = new UserTypeObject();
-
+        readJSON();
     }
 
     public boolean checkLoginMatches(String UserName, String Password){
         loginState=false;
         if(gs != null){
             try{
+                //System.out.println( UserName+ " : "+gs.getUsername()+" | "+Password+" : "+gs.getPassword());
                 if(UserName.equals(gs.getUsername()) && Password.equals(gs.getPassword())){
                     loginState = true;
                 }
