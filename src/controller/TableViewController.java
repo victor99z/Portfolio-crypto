@@ -1,7 +1,6 @@
 package controller;
 
 import com.api.*;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TableColumn;
 

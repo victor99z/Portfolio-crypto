@@ -1,0 +1,26 @@
+{
+  "admin": [
+    {
+      "idCoin": "bitcoin",
+      "buyPrice": 8100,
+      "qtd": 0.98
+    },
+    {
+      "idCoin": "litecoin",
+      "buyPrice": 128,
+      "qtd": 122
+    }
+  ],
+  "victor" :[
+    {
+      "idCoin": "bitcoin",
+      "buyPrice": 8100,
+      "qtd": 0.98
+    },
+    {
+      "idCoin": "litecoin",
+      "buyPrice": 128,
+      "qtd": 122
+    }
+  ]
+}

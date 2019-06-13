@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<AnchorPane prefHeight="930.0" prefWidth="1039.0" styleClass="MainPaneMoedas" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <StackPane prefHeight="744.0" prefWidth="1039.0">
+         <children>
+            <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1050.0">
+               <top>
+                  <Pane prefHeight="75.0" prefWidth="1039.0" BorderPane.alignment="CENTER" />
+               </top>
+               <right>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </right>
+               <bottom>
+                  <Pane prefHeight="75.0" prefWidth="1039.0" BorderPane.alignment="CENTER" />
+               </bottom>
+               <left>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <GridPane prefHeight="428.0" prefWidth="639.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="650.0" styleClass="PaneTitulo" GridPane.rowIndex="1">
+                           <children>
+                              <Label contentDisplay="CENTER" layoutX="3.0" layoutY="-4.0" prefHeight="67.0" prefWidth="165.0" styleClass="labelMoedas" text="Moedas" />
+                              <JFXButton layoutX="582.0" layoutY="11.0" prefHeight="28.0" prefWidth="54.0" styleClass="BtnAdicionarMoeda" text="+" />
+                           </children>
+                        </Pane>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <PieChart fx:id="GraficoPizza" legendVisible="false" prefHeight="274.0" prefWidth="642.0" title="Portfolio" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </GridPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
