@@ -11,7 +11,7 @@
 }
 
 .labelMoedas{
-    -fx-padding: 10;
+    -fx-padding: 0 0 0 15;
     -fx-font-family: 'Open Sans:400', sans-serif;
     -fx-font-weight: bold;
     -fx-font-size: 36px;
@@ -24,10 +24,11 @@
     -fx-font-size: 36px;
 }
 .PaneTitulo{
-    -fx-border-width: 0 0 0 4;
+    -fx-border-width: 0 0 0 10;
     -fx-border-color: #2a384a;
 }
 .labelsIndividual{
+    -fx-padding: 0 0 0 10;
     -fx-border-width: 0 0 0 4;
     -fx-border-color: #2a384a;
 }
