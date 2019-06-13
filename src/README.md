@@ -9,6 +9,8 @@ VM:
 
 Libs:
 
+    Java 11
+
     com.google.code.gson:gson:2.8.5 (maven)
 
     io.github.typhon0:AnimateFX:1.2.1 (maven)
