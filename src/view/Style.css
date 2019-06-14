@@ -1,7 +1,3 @@
-@font-face {
-    src: url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-}
-
 .background{
     -fx-background-color: #194fa8;
 }
@@ -17,7 +13,9 @@
     -fx-font-size: 36px;
 
 }
-.BtnAdicionarMoeda{
+
+
+.PaneTitulo JFXButton{
     -fx-padding: -5 -5 -5 -5;
     -fx-background-color: #2a384a;
     -fx-text-fill:white;
@@ -27,7 +25,8 @@
     -fx-border-width: 0 0 0 10;
     -fx-border-color: #2a384a;
 }
-.labelsIndividual{
+#labelsIndividual Label{
+    -fx-pref-height: 80;
     -fx-padding: 0 0 0 10;
     -fx-border-width: 0 0 0 4;
     -fx-border-color: #2a384a;

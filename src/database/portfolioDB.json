@@ -1,26 +1,19 @@
 {
-  "admin": [
+  "username": "admin",
+  "ArrayCoins": [
     {
       "idCoin": "bitcoin",
       "buyPrice": 8100,
-      "qtd": 0.98
+      "qtd": 98
     },
     {
       "idCoin": "litecoin",
       "buyPrice": 128,
       "qtd": 122
-    }
-  ],
-  "victor" :[
-    {
-      "idCoin": "bitcoin",
-      "buyPrice": 8100,
-      "qtd": 0.98
-    },
-    {
-      "idCoin": "litecoin",
-      "buyPrice": 128,
-      "qtd": 122
+    },{
+      "idCoin": "Ethereum",
+      "buyPrice": 178,
+      "qtd": 7000
     }
   ]
 }
