@@ -41,7 +41,7 @@ public class RegisterController extends ControllerClassType {
 
     @FXML
     void display(ActionEvent event) {
-        if(!register.getLoginState() && register.getGs() == null){
+        if(!register.getLoginState() && register.getUserInfo() == null){
             if(register.writeJSON(emailField.getText(),userField.getText(),userPasswordField.getText())){
                 MessageDialog(stackPane,"Cadastrado com sucesso!","Cadastro");
             }else{

@@ -2,24 +2,36 @@ package controller;
 
 import api.*;
 import com.google.gson.Gson;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.StackPane;
+
+import static java.lang.Thread.sleep;
 
 public class TableViewController extends ControllerClassType {
 
     //==========================================================
     //TableRoot aqui
     @FXML
+    private StackPane tvStackPane;
+    @FXML
     protected TableView<DataExchange> tvDados;
     protected DataArray dataArray;
     protected String url;
+    private boolean connectionIssues=false;
 
-    public void getResponseFromAPI(String url) {
-        ApiReader response = new ApiReader(url);
-        Gson gson = new Gson();
-        this.dataArray = gson.fromJson(response.toString(), DataArray.class);
+    public void getResponseFromAPI(String url) throws Exception{
+        try {
+            ApiReader response = new ApiReader(url);
+            Gson gson = new Gson();
+            this.dataArray = gson.fromJson(response.toString(), DataArray.class);
+        }catch (Exception e){
+            throw e;
+        }
     }
 
     public void setUrl(String url){
@@ -62,33 +74,103 @@ public class TableViewController extends ControllerClassType {
 
         tvDados.getColumns().addAll(col2,col3,col4,col5,col6,col7,col8,col9,col10);
 
-        t1.start();
-
+        threadStart();
+        /*Thread t = new Thread(tarefaCargaPg);
+        t.setDaemon(true);
+        t.start();*/
     }
 
-    public void threadShutdown(){
-        threadStop = true;
+    public void threadShutdown(){ threadStop = true; }
+    public void threadStart(){ threadStop = false;t1.start(); }
+
+    public void ThreadParseMessage(String info,String name){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                getParentController().MessageDialog(getParentStackPane(),info,name);
+            }
+        });
     }
+
+
+
 
     Thread t1 = new Thread(){
         @Override
         public void run() {
             while(!threadStop){
                 try {
-
                     getResponseFromAPI(getUrl());
-
                     tvDados.getItems().clear();
                     for(DataExchange dt : dataArray.data) {
                         tvDados.getItems().addAll(dt);
                     }
-                    sleep(6000);
+                    connectionIssues=false;
+                    sleep(8000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    System.err.println("Parsing Error!");
+                }catch (Exception e){
+                    System.err.println("Connection Failed!> "+e.toString() );
+                    if(!connectionIssues){
+                        connectionIssues=true;
+                        ThreadParseMessage("Check your Internet Connection","Connection Issues");
+                    }
+                    try {
+                        sleep(8000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
                 }
+
             }
+        }
+    };
+}
+
+
+/*======================================
+
+    public Thread t;
+    private Task<Void> tarefaCargaPg = new Task<Void>() {
+        @Override
+        protected Void call(){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    while(!threadStop && !isCancelled()){
+                        try {
+                            getResponseFromAPI(getUrl());
+                            tvDados.getItems().clear();
+                            for(DataExchange dt : dataArray.data) {
+                                tvDados.getItems().addAll(dt);
+                            }
+                            connectionIssues=false;
+                            sleep(8000);
+                        } catch (InterruptedException e) {
+                            //e.printStackTrace();
+                            System.err.println("Parsing Error!");
+                        }catch (Exception e){
+                            System.err.println("Connection Failed!> "+e.toString() );
+                            if(!connectionIssues){
+                                System.out.println("Thread issue");
+                                connectionIssues=true;
+                                ThreadParseMessage("Check your Internet Connection","Connection Issues");
+                            }
+                            try {
+                                sleep(8000);
+                            } catch (InterruptedException ex) {
+                                //ex.printStackTrace();
+                            }
+                        }
+
+                    }
+                }
+            });
+
+            return null;
         }
     };
 
 
-}
+======================================*/

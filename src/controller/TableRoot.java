@@ -17,7 +17,7 @@ public abstract class TableRoot {
         setUrl(url);
     }
 
-    public void getResponseFromAPI(String url){
+    public void getResponseFromAPI(String url) throws Exception {
         ApiReader response = new ApiReader(url);
         Gson gson = new Gson();
         this.dataArray = gson.fromJson(response.toString(),DataArray.class);

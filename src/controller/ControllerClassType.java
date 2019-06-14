@@ -4,6 +4,7 @@ import animatefx.animation.SlideInUp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import core.UserLogin;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,27 +17,75 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class ControllerClassType {
 
     private Stage stage;
-    public ControllerClassType(){}
+    private Scene scene;
+    private static UserLogin userInfo;
+    private ControllerClassType parentController;
+
+    public void setParentController(ControllerClassType parentController) { this.parentController = parentController; }
+    public ControllerClassType getParentController() { return parentController; }
+
+    public ControllerClassType(){ }
     @FXML
-    void switch_cad(ActionEvent event,StackPane stackPane, String filename,boolean fullscreen){
+
+    public void setUserData(UserLogin info){
+        this.userInfo = info;
+    }
+
+    public UserLogin getUserData() { return userInfo; }
+
+    public void setScene(){
+        try{
+            scene = stage.getScene();
+        }catch (Exception e){
+            System.err.println("Stage not set!");
+        }
+    }
+
+    private ArrayList<StackPane> parentStackPaneList;
+    public void setParentStackPane(StackPane parentStackPane) { parentStackPaneList=new ArrayList<StackPane>();this.parentStackPaneList.add(parentStackPane); }
+    public StackPane getParentStackPane() { return parentStackPaneList.get(0); }
+
+    //===========================
+
+    public void alignUserPage(UserLogin i){
+        setUserData(i);
+        changeCSS("../src/css/"+userInfo.getUserInfo().getTheme()+".css");
+    }
+
+    ControllerClassType switch_cad(ActionEvent event,StackPane stackPane, String filename,boolean fullscreen){
         try{
             Stage stage = (Stage) stackPane.getScene().getWindow();
             SwitchScene switchScene = new SwitchScene(stage);
             ControllerClassType c = switchScene.switch_(filename);
             c.setStage(stage);
             stage.setFullScreen(fullscreen);
+            return c;
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
         //stage.close();
     }
 
     public void setStage(Stage stage){
         this.stage =stage;
+        setScene();
+    }
+
+    public void changeCSS(String filename,String removal){
+        if(removal.length() > 0) scene.getStylesheets().remove(ControllerClassType.class.getResource(removal).toExternalForm());
+        if(!scene.getStylesheets().contains(ControllerClassType.class.getResource(filename).toExternalForm()))
+            scene.getStylesheets().add(ControllerClassType.class.getResource(filename).toExternalForm());
+    }
+    public void changeCSS(String filename){
+        if(!scene.getStylesheets().contains(ControllerClassType.class.getResource(filename).toExternalForm()))
+            scene.getStylesheets().add(ControllerClassType.class.getResource(filename).toExternalForm());
     }
 
     public Stage getStage() {
@@ -55,7 +104,7 @@ public class ControllerClassType {
     public ControllerClassType loadFxml (AnchorPane obj, String file){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/"+file+".fxml"));
         StackPane newLoadedPane;
-        ControllerClassType controller = new ControllerClassType();
+        ControllerClassType controller;
 
         try {
             newLoadedPane = (StackPane) loader.load();
@@ -73,10 +122,10 @@ public class ControllerClassType {
             return null;
         }
 
-
     }
 
     void MessageDialog(StackPane stackPane,String info,String name){
+        System.out.println("Message("+name+"): "+info);
         //titleLabel.setText(name);
         JFXDialogLayout dl = new JFXDialogLayout();
         dl.setHeading(new Text(name));

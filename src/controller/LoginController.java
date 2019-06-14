@@ -52,7 +52,8 @@ public class LoginController extends ControllerClassType{
     @FXML
     void display(ActionEvent event) {
         if(login.checkLoginMatches(InputUsername.getText(), InputPassword.getText())){
-            super.switch_cad(event,stackPane,"RootPane",false);
+            ControllerClassType rp_controller = super.switch_cad(event,stackPane,"RootPane",false);
+            rp_controller.alignUserPage(login);
         }else{
             MessageDialog(stackPane,"Usuário ou senha incorretos","Erro!");
         }

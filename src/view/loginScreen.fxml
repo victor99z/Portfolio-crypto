@@ -29,12 +29,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXTextField fx:id="InputUsername" prefHeight="45.0" prefWidth="365.0" promptText="Username" text="admin">
+                  <JFXTextField fx:id="InputUsername" prefHeight="45.0" prefWidth="365.0" promptText="Username">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="InputPassword" prefHeight="45.0" prefWidth="365.0" promptText="Password" text="admin" GridPane.rowIndex="1">
+                  <JFXPasswordField fx:id="InputPassword" prefHeight="45.0" prefWidth="365.0" promptText="Password" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>

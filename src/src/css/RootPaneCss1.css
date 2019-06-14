@@ -14,63 +14,39 @@
     tab bar
 */
 
-.jfx-tab-pane .headers-region {
-    -fx-background-color: #222f3c;/*#1b75bc*/
-}
-.jfx-tab-pane .tab-header-background {
-    -fx-background-color: #222f3c;/*#1b75bc*/
-}
+
 .jfx-tab-pane .tab-selected-line {
-    -fx-stroke: #c1c1c1;
     -fx-stroke-width: 0pt;
 }
-.jfx-tab-pane .tab-header-area .jfx-rippler{
-    -jfx-rippler-fill:#3FE387;
-}
+
 /*
     End Tab Bar
 */
 
 .tab .tab-label {
     -fx-alignment: CENTER;
-    -fx-text-fill: #EBEAF0;
-
 }
 
 .tab{
-    -fx-background-color: #222f3c;
     -fx-background-insets: 0.0;
     -fx-background-radius: 0.0;
     -fx-padding: 0 30 0 30;
-
     -fx-border-width: 5 0 0 0;
-    -fx-border-color: #1c2732;
-    -fx-fill: #c2c2c2;
+}
+
+.jfx-tab-pane .tab-header-background {
+    /*-fx-background-color: #333;/*#1b75bc*/
 }
 
 .tab:selected{
-    -fx-background-color: #1c2732;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
     -fx-border-width: 5 0 0 0;
-    -fx-border-color: #3FE387;
-    -fx-fill: #FFF;
-}
-
-#TabTitle{
-color: #bbbbbb;
-}
-
-.tab:selected *{
-
-    color: #FFF;
-
 }
 
 .tab:focused
 {
   -fx-focus-color: transparent;
-
 }
 
 .tab-pane *.tab-header-background
@@ -83,7 +59,6 @@ color: #bbbbbb;
     -fx-background-insets: 0, 0 0 10;
     -fx-padding: 0.0em 0.0em 0.0em 0.0em;
 
-
 }
 
 .tab:selected .focus-indicator
@@ -92,3 +67,16 @@ color: #bbbbbb;
     -fx-border-color: transparent;
 }
 
+/*
+    INNER Elements
+    */
+
+#settingsPane{
+    -fx-background-insets: 10;
+    -fx-background-radius: 10;
+
+}
+#settingsPane GridPane{
+    -fx-border-radius: 20px;
+    -fx-border-color: grey;
+}
