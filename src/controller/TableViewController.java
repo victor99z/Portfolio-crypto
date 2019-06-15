@@ -20,33 +20,16 @@ public class TableViewController extends ControllerClassType {
     private StackPane tvStackPane;
     @FXML
     protected TableView<DataExchange> tvDados;
-    protected DataArray dataArray;
-    protected String url;
-    private boolean connectionIssues=false;
-
-    public void getResponseFromAPI(String url) throws Exception{
-        try {
-            ApiReader response = new ApiReader(url);
-            Gson gson = new Gson();
-            this.dataArray = gson.fromJson(response.toString(), DataArray.class);
-        }catch (Exception e){
-            throw e;
-        }
-    }
-
-    public void setUrl(String url){
-        this.url = url;
-    }
-    public String getUrl(){
-        return url;
-    }
+    private ApiObject apiData;
 
     //=======================================================
 
+
+    public void setApiData(ApiObject apiData) { this.apiData = apiData; }
+    public ApiObject getApiData() { return apiData; }
+
     private boolean threadStop = false;
-    public TableViewController(){
-        setUrl("https://api.coincap.io/v2/markets?exchangeId=binance&quoteId=tether&limit=50");
-    }
+    public TableViewController(){ }
 
     public void initialize(){
 
@@ -98,79 +81,25 @@ public class TableViewController extends ControllerClassType {
     Thread t1 = new Thread(){
         @Override
         public void run() {
-            while(!threadStop){
-                try {
-                    getResponseFromAPI(getUrl());
+            while(true){
+                if(apiData.isDataReady()){
                     tvDados.getItems().clear();
-                    for(DataExchange dt : dataArray.data) {
+                    for(DataExchange dt : apiData.getDataArray().data) {
                         tvDados.getItems().addAll(dt);
-                    }
-                    connectionIssues=false;
-                    sleep(8000);
-                } catch (InterruptedException e) {
-                    //e.printStackTrace();
-                    System.err.println("Parsing Error!");
-                }catch (Exception e){
-                    System.err.println("Connection Failed!> "+e.toString() );
-                    if(!connectionIssues){
-                        connectionIssues=true;
-                        ThreadParseMessage("Check your Internet Connection","Connection Issues");
                     }
                     try {
                         sleep(8000);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    try {
+                        sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-
             }
         }
     };
 }
-
-
-/*======================================
-
-    public Thread t;
-    private Task<Void> tarefaCargaPg = new Task<Void>() {
-        @Override
-        protected Void call(){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    while(!threadStop && !isCancelled()){
-                        try {
-                            getResponseFromAPI(getUrl());
-                            tvDados.getItems().clear();
-                            for(DataExchange dt : dataArray.data) {
-                                tvDados.getItems().addAll(dt);
-                            }
-                            connectionIssues=false;
-                            sleep(8000);
-                        } catch (InterruptedException e) {
-                            //e.printStackTrace();
-                            System.err.println("Parsing Error!");
-                        }catch (Exception e){
-                            System.err.println("Connection Failed!> "+e.toString() );
-                            if(!connectionIssues){
-                                System.out.println("Thread issue");
-                                connectionIssues=true;
-                                ThreadParseMessage("Check your Internet Connection","Connection Issues");
-                            }
-                            try {
-                                sleep(8000);
-                            } catch (InterruptedException ex) {
-                                //ex.printStackTrace();
-                            }
-                        }
-
-                    }
-                }
-            });
-
-            return null;
-        }
-    };
-
-
-======================================*/

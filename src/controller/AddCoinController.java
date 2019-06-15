@@ -1,5 +1,6 @@
 package controller;
 
+import api.DataArray;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -23,9 +24,9 @@ public class AddCoinController extends ControllerClassType{
     @FXML
     private StackPane coinStackPane;
 
-    private UserCoin uc;
-    public void setUserCoinObject(UserCoin uc){ this.uc = uc;}
-    public UserCoin getUserCoinObject(){ return uc; }
+    private UserCoin UserCoins;
+    public void setUserCoinObject(UserCoin uc){ this.UserCoins = uc;}
+    public UserCoin getUserCoinObject(){ return UserCoins; }
 
     public void initialize(){ }
 
@@ -36,7 +37,7 @@ public class AddCoinController extends ControllerClassType{
         int c=0;
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
 
-        for (CoinInfo ci:uc.ArrayCoins) {
+        for (CoinInfo ci:UserCoins.ArrayCoins) {
             GridPane p = new GridPane();
 
             JFXTextField t=new JFXTextField();

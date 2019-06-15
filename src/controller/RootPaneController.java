@@ -1,5 +1,6 @@
 package controller;
 
+import api.ApiObject;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
@@ -53,15 +54,20 @@ public class RootPaneController  extends ControllerClassType{
 
     private ControllerClassType tabelaController;
     private ControllerClassType homeController;
+    private ApiObject apiResponseData;
 
     public void initialize(){
+        apiResponseData = new ApiObject();
+
         tabelaController = super.loadFxml(containerTabela,"TableView");
         tabelaController.setParentStackPane(stackPane);
         tabelaController.setParentController(this);
+        tabelaController.setApiData(apiResponseData);
 
         homeController = super.loadFxml(conteinerHome,"home");
         homeController.setParentStackPane(stackPane);
         homeController.setParentController(this);
+        homeController.setApiData(apiResponseData);
         /*super.getStage().setOnHidden(event -> {
             System.exit(0);
         });*/

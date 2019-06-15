@@ -53,6 +53,8 @@ public class HomeController extends ControllerClassType implements Initializable
 
             coinCtr.setParentController(this);
             coinCtr.setUserCoinObject(c1);
+            coinCtr.setApiData(this.getApiData());
+
             coinCtr.gridCoinSet();
         }catch (Exception e){
             e.printStackTrace();
@@ -71,8 +73,22 @@ public class HomeController extends ControllerClassType implements Initializable
             c1 = gson.fromJson(reader,UserCoin.class);
             reader.close();
         } catch (IOException e) {
+            createJSON();
             e.printStackTrace();
         }
+    }
+
+    public boolean createJSON() {
+        FileWriter write = null;
+        try {
+            write = new FileWriter(System.getProperty("user.dir")+"\\portfolioDB.json");
+            write.close();
+            return true;
+        } catch (IOException e) {
+            //e.printStackTrace();
+            return false;
+        }
+
     }
 
     public boolean updateJSON(){
@@ -97,17 +113,21 @@ public class HomeController extends ControllerClassType implements Initializable
 
     public HashMap<String, Double> CountAllMoney(){
         getJsonFromFile();
-        double count = 0;
-        HashMap<String, Double> coinPercentage  = new HashMap<>();
-        for(CoinInfo dt : c1.ArrayCoins){
-            count += dt.qtd * dt.buyPrice;
-        }
+        try{
+            double count = 0;
+            HashMap<String, Double> coinPercentage  = new HashMap<>();
+            for(CoinInfo dt : c1.ArrayCoins){
+                count += dt.qtd * dt.buyPrice;
+            }
 
-        for(CoinInfo dt : c1.ArrayCoins){
-            coinPercentage.put(dt.idCoin, (dt.buyPrice*dt.qtd)/count*100);
-        }
+            for(CoinInfo dt : c1.ArrayCoins){
+                coinPercentage.put(dt.idCoin, (dt.buyPrice*dt.qtd)/count*100);
+            }
 
-        return coinPercentage;
+            return coinPercentage;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public void setGraficoMoedas(){

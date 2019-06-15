@@ -3,7 +3,7 @@ package database;
 public class CoinInfo {
     public String idCoin;
     public Double buyPrice;
-    public int qtd;
+    public double qtd;
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package controller;
 
 import animatefx.animation.SlideInUp;
+import api.ApiObject;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -26,12 +27,14 @@ public class ControllerClassType {
     private Scene scene;
     private static UserLogin userInfo;
     private ControllerClassType parentController;
+    private ArrayList<StackPane> parentStackPaneList;
+    private ApiObject apiResponseData;
+
+    public ControllerClassType(){ }
 
     public void setParentController(ControllerClassType parentController) { this.parentController = parentController; }
     public ControllerClassType getParentController() { return parentController; }
 
-    public ControllerClassType(){ }
-    @FXML
 
     public void setUserData(UserLogin info){
         this.userInfo = info;
@@ -46,8 +49,11 @@ public class ControllerClassType {
             System.err.println("Stage not set!");
         }
     }
+    public void setStage(Stage stage){
+        this.stage =stage;
+        setScene();
+    }
 
-    private ArrayList<StackPane> parentStackPaneList;
     public void setParentStackPane(StackPane parentStackPane) { parentStackPaneList=new ArrayList<StackPane>();this.parentStackPaneList.add(parentStackPane); }
     public StackPane getParentStackPane() { return parentStackPaneList.get(0); }
 
@@ -73,10 +79,14 @@ public class ControllerClassType {
         //stage.close();
     }
 
-    public void setStage(Stage stage){
-        this.stage =stage;
-        setScene();
+    //================================
+
+    public void setApiData(ApiObject a){
+        apiResponseData = a;
     }
+
+    public ApiObject getApiData() { return apiResponseData; }
+    //================================
 
     public void changeCSS(String filename,String removal){
         if(removal.length() > 0) scene.getStylesheets().remove(ControllerClassType.class.getResource(removal).toExternalForm());
