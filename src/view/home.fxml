@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-
-<StackPane prefHeight="744.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<StackPane prefHeight="744.0" prefWidth="1039.0" stylesheets="@../src/css/homeStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="1050.0">
          <top>
@@ -47,7 +46,7 @@
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="650.0" styleClass="PaneTitulo" GridPane.rowIndex="1">
                      <children>
                         <Label contentDisplay="CENTER" layoutX="3.0" layoutY="-4.0" prefHeight="67.0" prefWidth="165.0" styleClass="labelMoedas" text="Moedas" />
-                        <JFXButton buttonType="RAISED" layoutX="582.0" layoutY="11.0" prefHeight="28.0" prefWidth="54.0" text="+" />
+                        <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="582.0" layoutY="11.0" onAction="#addCoinPanel" prefHeight="28.0" prefWidth="54.0" text="+" />
                      </children>
                   </Pane>
                   <GridPane id="labelsIndividual" prefHeight="366.0" prefWidth="650.0" GridPane.rowIndex="2">

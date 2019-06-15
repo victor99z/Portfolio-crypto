@@ -1,0 +1,25 @@
+
+.mainPaneMoedas{
+    -fx-font-family: 'Open Sans:700', sans-serif;
+}
+
+.labelMoedas{
+    -fx-padding: 0 0 0 15;
+    -fx-font-family: 'Open Sans:400', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 36px;
+}
+
+.PaneTitulo JFXButton{
+    -fx-padding: -5 -5 -5 -5;
+    -fx-text-fill:white;
+    -fx-font-size: 36px;
+}
+.PaneTitulo{
+    -fx-border-width: 0 0 0 10;
+}
+#labelsIndividual Label{
+    -fx-pref-height: 80;
+    -fx-padding: 0 0 0 10;
+    -fx-border-width: 0 0 0 4;
+}

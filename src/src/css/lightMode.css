@@ -36,3 +36,21 @@
 #TabTitle{
 color: #bbbbbb;
 }
+
+/* Home moedas Aqui*/
+
+.background{
+    -fx-background-color: #194fa8;
+}
+
+.PaneTitulo JFXButton{
+    -fx-background-color: #2a384a;
+}
+.PaneTitulo{
+    -fx-border-color: #2a384a;
+}
+#labelsIndividual Label{
+    -fx-border-color: #2a384a;
+}
+
+/* Fim Home Moedas*/
