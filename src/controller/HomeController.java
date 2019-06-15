@@ -3,7 +3,6 @@ package controller;
 import com.api.*;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXListCell;
-import com.jfoenix.controls.JFXListView;
 import database.CoinInfo;
 import database.UserCoin;
 import javafx.collections.FXCollections;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import java.io.*;
 import java.net.URL;
@@ -31,10 +29,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private Label labelMoneyTotal;
+    @FXML
+    private Label labelMoneyLucro;
 
     private DataArray dataArray;
 
     private double moneyTotal = 0;
+    private double moneyInicial = 0;
 
     /*
         Pega os dados do nosso querido arquivo json la em /database/
@@ -66,7 +67,7 @@ public class HomeController implements Initializable {
         for(CoinInfo dt : c1.ArrayCoins){
             coinPercentage.put(dt.idCoin, (dt.buyPrice*dt.qtd)/count*100);
         }
-
+        moneyInicial = count;
         return coinPercentage;
     }
 
@@ -127,7 +128,15 @@ public class HomeController implements Initializable {
         graficoPizza.setData(pieChartData);
         graficoPizza.setStartAngle(90);
 
+
         labelMoneyTotal.setText("$ "+new DecimalFormat("##.##").format(moneyTotal));
+        if(moneyTotal-moneyInicial >= 0){
+            labelMoneyLucro.setStyle("-fx-text-fill: green");
+            labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
+        }else{
+            labelMoneyLucro.setStyle("-fx-text-fill: red");
+            labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
+        }
 
     }
 }
