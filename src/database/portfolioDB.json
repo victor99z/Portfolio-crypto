@@ -2,18 +2,22 @@
   "username": "admin",
   "ArrayCoins": [
     {
-      "idCoin": "bitcoin",
+      "idCoin": "BTC",
       "buyPrice": 8100,
-      "qtd": 98
+      "qtd": 98.8
     },
     {
-      "idCoin": "litecoin",
-      "buyPrice": 128,
+      "idCoin": "LTC",
+      "buyPrice": 1280,
       "qtd": 122
     },{
-      "idCoin": "Ethereum",
+      "idCoin": "ETH",
       "buyPrice": 178,
       "qtd": 7000
+    },{
+      "idCoin": "ADA",
+      "buyPrice": 0.8,
+      "qtd": 170000
     }
   ]
 }
