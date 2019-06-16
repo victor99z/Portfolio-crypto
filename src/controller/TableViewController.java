@@ -1,14 +1,17 @@
 package controller;
 
 import api.*;
-import com.google.gson.Gson;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+
+import javax.xml.crypto.Data;
+
+import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
 
@@ -18,10 +21,13 @@ public class TableViewController extends ControllerClassType {
     //TableRoot aqui
     @FXML
     private StackPane tvStackPane;
-    @FXML
-    protected TableView<DataExchange> tvDados;
-    private ApiObject apiData;
 
+    /*@FXML
+    protected TableView<DataExchange> tvDados;*/
+
+    private ApiObject apiData;
+    @FXML
+    private TableView<DataExchange> tvDados;
     //=======================================================
 
 
@@ -33,7 +39,7 @@ public class TableViewController extends ControllerClassType {
 
     public void initialize(){
 
-
+        ArrayList<TableColumn> tC = new ArrayList<>();
         TableColumn<DataExchange, String> col2 = new TableColumn<>("Rank");
         TableColumn<DataExchange, String> col3 = new TableColumn<>("Symbol");
         TableColumn<DataExchange, String> col4 = new TableColumn<>("Nome");
@@ -43,8 +49,11 @@ public class TableViewController extends ControllerClassType {
         TableColumn<DataExchange, String> col8 = new TableColumn<>("VOLUME24HR");
         TableColumn<DataExchange, String> col9 = new TableColumn<>("ExchangeVolume");
         TableColumn<DataExchange, String> col10 = new TableColumn<>("TradesCount");
-
-
+        tC.add(col2);tC.add(col3);tC.add(col4);tC.add(col5);tC.add(col6);
+        tC.add(col7);tC.add(col8);tC.add(col9);tC.add(col10);
+        for(TableColumn<DataExchange,String> sp:tC){
+            sp.getStyleClass().add("ColumnClass");
+        }
         col2.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().rank));
         col3.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseSymbol));
         col4.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseId));
@@ -70,7 +79,7 @@ public class TableViewController extends ControllerClassType {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                getParentController().MessageDialog(getParentStackPane(),info,name);
+                getParentController().messageDialog(getParentStackPane(),info,name);
             }
         });
     }

@@ -1,20 +1,12 @@
 package controller;
 
-import api.DataArray;
-import com.google.gson.Gson;
 import com.jfoenix.controls.*;
 import core.UserLogin;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class LoginController extends ControllerClassType{
 
@@ -55,7 +47,7 @@ public class LoginController extends ControllerClassType{
             ControllerClassType rp_controller = super.switch_cad(event,stackPane,"RootPane",false);
             rp_controller.alignUserPage(login);
         }else{
-            MessageDialog(stackPane,"Usuário ou senha incorretos","Erro!");
+            messageDialog(stackPane,"Usuário ou senha incorretos","Erro!");
         }
     }
 

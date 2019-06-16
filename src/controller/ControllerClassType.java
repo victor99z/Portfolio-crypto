@@ -35,6 +35,9 @@ public class ControllerClassType {
     public void setParentController(ControllerClassType parentController) { this.parentController = parentController; }
     public ControllerClassType getParentController() { return parentController; }
 
+    public StackPane myStackPane;
+    public void setMyStackPane(StackPane e){ this.myStackPane=e; }
+    public StackPane getMyStackPane() { return myStackPane; }
 
     public void setApiData(ApiObject a){ apiResponseData = a;}
     public ApiObject getApiData() { return apiResponseData; }
@@ -126,7 +129,7 @@ public class ControllerClassType {
         //stage.close();
     }
 
-    void MessageDialog(StackPane stackPane,String info,String name){
+    public void messageDialog(StackPane stackPane, String info, String name){
         System.out.println("Message("+name+"): "+info);
         //titleLabel.setText(name);
         JFXDialogLayout dl = new JFXDialogLayout();

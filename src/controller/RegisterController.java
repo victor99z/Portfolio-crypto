@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class RegisterController extends ControllerClassType {
 
@@ -43,12 +42,12 @@ public class RegisterController extends ControllerClassType {
     void display(ActionEvent event) {
         if(!register.getLoginState() && register.getUserInfo() == null){
             if(register.writeJSON(emailField.getText(),userField.getText(),userPasswordField.getText())){
-                MessageDialog(stackPane,"Cadastrado com sucesso!","Cadastro");
+                messageDialog(stackPane,"Cadastrado com sucesso!","Cadastro");
             }else{
-                MessageDialog(stackPane,"Cadastrado deu ruin!","Cadastro");
+                messageDialog(stackPane,"Cadastrado deu ruin!","Cadastro");
             }
         }else{
-            MessageDialog(stackPane,"Cadastrado ja existe","Cadastro");
+            messageDialog(stackPane,"Cadastrado ja existe","Cadastro");
         }
     }
 

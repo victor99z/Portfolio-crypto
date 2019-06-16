@@ -29,32 +29,33 @@ public class AddCoinController extends ControllerClassType{
     public void gridCoinSet(){
         int c=0;
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
+        if(getApiData()!= null && getApiData().isDataReady()) {
+            for (DataExchange ci : getApiData().getDataArray().data) {
+                GridPane p = new GridPane();
 
-        for (DataExchange ci:getApiData().getDataArray().data) {
-            GridPane p = new GridPane();
-
-            JFXTextField t=new JFXTextField();
-            t.setPromptText("Quantia");
-            JFXButton b=new JFXButton();
-            b.setText("Adicionar");
-            b.setOnAction(event -> {
-                if(t.getText().length() > 0)
-                    try{
-                        CoinInfo nc = new CoinInfo(ci.baseSymbol,Double.valueOf(ci.priceUsd),Double.valueOf(t.getText()));
-                        userCoins.addCoin(nc);
-                    }catch (Exception e){
-                        MessageDialog(coinStackPane,"Quantia inválida","Erro");
+                JFXTextField t = new JFXTextField();
+                t.setPromptText("Quantia");
+                JFXButton b = new JFXButton();
+                b.setText("Adicionar");
+                b.setOnAction(event -> {
+                    if (t.getText().length() > 0)
+                        try {
+                            CoinInfo nc = new CoinInfo(ci.baseSymbol, Double.valueOf(ci.priceUsd), Double.valueOf(t.getText()));
+                            userCoins.addCoin(nc);
+                        } catch (Exception e) {
+                            messageDialog(coinStackPane, "Quantia inválida", "Erro");
                         /*HomeController parentController = (HomeController) getParentController();
                         parentController.updateJSON();*/
-                    }
-            });
+                        }
+                });
 
-            p.addColumn(0,new Text(String.valueOf(c)+": "));
-            p.addColumn(1,new Text(ci.baseSymbol));
-            p.addColumn(2,t);
-            p.addColumn(3,b);
-            c++;
-            listCoins.add(p);
+                p.addColumn(0, new Text(String.valueOf(c) + ": "));
+                p.addColumn(1, new Text(ci.baseSymbol));
+                p.addColumn(2, t);
+                p.addColumn(3, b);
+                c++;
+                listCoins.add(p);
+            }
         }
         coinDisplay.setItems(listCoins);
     }

@@ -165,19 +165,19 @@ public class HomeController extends ControllerClassType implements Initializable
     }
 
     boolean dataWasSet = false;
+    boolean apiLoadFailedState =false;
     public void setGraficoMoedas(){
         dataWasSet=false;
         Platform.runLater(new Thread(){
             @Override
             public void run() {
-                while(!dataWasSet){
+                while(dataWasSet == false){
                     try{
                         moneyTotal = 0;
                         moneyInicial = 0;
-
                         HashMap<String, Double> structure = CountAllMoney();
                         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-                        coinValueNow();
+                        if(coinValueNow()){ dataWasSet=true;apiLoadFailedState=true; }else { throw new Exception();}
                         if(structure != null){
                             Iterator it = structure.entrySet().iterator();
                             while(it.hasNext()){
@@ -186,7 +186,7 @@ public class HomeController extends ControllerClassType implements Initializable
                                 Double v = Double.parseDouble(pair.getValue().toString());
                                 pieChartData.add(new PieChart.Data(s,v));
                             }
-                            dataWasSet=true;
+
                             GraficoPizza.setData(pieChartData);
                             GraficoPizza.setStartAngle(90);
                             labelMoneyTotal.setText("$ "+new DecimalFormat("##.##").format(moneyTotal));
@@ -197,10 +197,13 @@ public class HomeController extends ControllerClassType implements Initializable
                                 labelMoneyLucro.setStyle("-fx-text-fill: red");
                                 labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
                             }
-
                         }else{
                             System.err.println("structure empty");
-                            GraficoPizza.setData(pieChartData);
+                            try{
+                                GraficoPizza.setData(pieChartData);
+                            }catch (Exception e){
+                                System.err.println("Fail loading pieChartData");
+                            }
                             GraficoPizza.setStartAngle(90);
                             labelMoneyLucro.setStyle("-fx-text-fill: red");
 
@@ -208,7 +211,11 @@ public class HomeController extends ControllerClassType implements Initializable
 
                         }
                     }catch (Exception e){
-                        e.printStackTrace();
+                        //e.printStackTrace();
+                        try{
+                            if(!apiLoadFailedState){System.err.println("Api load Failed");apiLoadFailedState=true;}
+                            sleep(500);
+                        }catch (Exception e2){/*f*/}
                     }
                 }
             }
@@ -217,7 +224,7 @@ public class HomeController extends ControllerClassType implements Initializable
 
     //Home do GIT
 
-    public void coinValueNow(){
+    public boolean coinValueNow(){
         if(getApiData()!= null && getApiData().isDataReady()){
             moneyTotal = 0;
             vBoxRoot.getChildren().clear();
@@ -230,7 +237,11 @@ public class HomeController extends ControllerClassType implements Initializable
                     }
                 }
             }
-        }
+            if(moneyTotal==0)
+                return false;
+            else
+                return true;
+        }else { return false; }
     }
     public void setCoinCells(String nome, Double qtd, Double valorAtual){
         vBoxRoot.getChildren().removeAll();
@@ -246,6 +257,15 @@ public class HomeController extends ControllerClassType implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setGraficoMoedas();
+        /*Platform.runLater(new Thread(){
+            public void run(){
+                try {
+                    sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
     }
 
 }

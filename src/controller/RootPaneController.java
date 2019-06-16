@@ -9,16 +9,10 @@ import core.UserLogin;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class RootPaneController  extends ControllerClassType{
 
@@ -61,6 +55,8 @@ public class RootPaneController  extends ControllerClassType{
 
     public void initialize(){
         apiResponseData = new ApiObject();
+        setMyStackPane(stackPane);
+        apiResponseData.setLastController(this);
 
         tabelaController = super.loadFxml(containerTabela,"TableView");
         tabelaController.setParentStackPane(stackPane);
@@ -78,7 +74,7 @@ public class RootPaneController  extends ControllerClassType{
         homeController.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Roboto%22");*/
         HomeController hc = (HomeController) homeController;
 
-        Platform.runLater(new Thread(){
+        /*Platform.runLater(new Thread(){
             @Override
             public void run() {
                 try {
@@ -88,7 +84,7 @@ public class RootPaneController  extends ControllerClassType{
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
 
         /*super.getStage().setOnHidden(event -> {
             System.exit(0);
@@ -151,7 +147,7 @@ public class RootPaneController  extends ControllerClassType{
                     changes="Password ";
                 }
             }
-        MessageDialog(stackPane,changes+"updated","Update");
+        messageDialog(stackPane,changes+"updated","Update");
     }
 
 }

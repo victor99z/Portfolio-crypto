@@ -1,6 +1,7 @@
 package api;
 
 import com.google.gson.Gson;
+import controller.ControllerClassType;
 import javafx.application.Platform;
 
 public class ApiObject {
@@ -48,7 +49,22 @@ public class ApiObject {
     public void threadShutdown(){ threadStop = true; }
     public void threadStart(){ threadStop = false;t1.start(); }
 
+    private ControllerClassType lastController;
+    public void setLastController(ControllerClassType lastController) { this.lastController = lastController; }
+    public ControllerClassType getLastController() { return lastController; }
 
+    public void alert(String info,String message){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    getLastController().messageDialog(getLastController().getMyStackPane(),message,info);
+                }catch (Exception e){
+                    System.err.println("LastController not set || stackPane not set");
+                }
+            }
+        });
+    }
 
 
     Thread t1 = new Thread(){
@@ -68,6 +84,7 @@ public class ApiObject {
                     if(!connectionIssues){
                         connectionIssues=true;
                         dataReady=false;
+                        alert("Verify internet connection","Connection Issues");
                     }
                     try {
                         sleep(8000);
