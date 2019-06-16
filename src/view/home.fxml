@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="930.0" prefWidth="1039.0" styleClass="MainPaneMoedas" stylesheets="@../src/css/homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<StackPane prefWidth="1039.0" styleClass="MainPaneMoedas" stylesheets="@../src/css/homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
          <children>
-            <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1050.0">
+            <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1800.0" prefWidth="1050.0">
                <top>
                   <Pane prefHeight="144.0" prefWidth="1050.0" styleClass="labelResumo" BorderPane.alignment="CENTER">
                      <children>
@@ -33,7 +33,7 @@
                            <children>
                               <Label alignment="CENTER" prefHeight="53.0" prefWidth="355.0" text="Portfolio" GridPane.columnIndex="1" />
                               <Label fx:id="labelMoneyTotal" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="350.0" styleClass="labelCountMoney" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="labelMoneyLucro" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="68.0" prefWidth="350.0" styleClass="labelCountMoney" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="labelMoneyLucro" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="68.0" prefWidth="350.0" styleClass="labelCountProfit" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children></Pane>
@@ -55,10 +55,10 @@
                     <rowConstraints>
                       <RowConstraints maxHeight="301.0" minHeight="10.0" prefHeight="286.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="173.0" minHeight="0.0" prefHeight="121.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="452.0" minHeight="10.0" prefHeight="270.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="9000.0" minHeight="10.0" prefHeight="270.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <FlowPane prefHeight="244.0" prefWidth="650.0">
+                        <FlowPane prefWidth="650.0">
                            <children>
                               <PieChart fx:id="GraficoPizza" legendVisible="false" prefHeight="298.0" prefWidth="642.0" />
                            </children>
@@ -69,7 +69,7 @@
                               <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="582.0" layoutY="11.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="+" />
                            </children>
                         </Pane>
-                        <VBox fx:id="vBoxRoot" prefHeight="260.0" prefWidth="650.0" GridPane.rowIndex="2">
+                        <VBox fx:id="vBoxRoot" prefHeight="205.0" prefWidth="650.0" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="50.0" />
                            </GridPane.margin>

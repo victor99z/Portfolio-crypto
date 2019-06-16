@@ -1,6 +1,5 @@
 package controller;
 
-import api.DataArray;
 import api.DataExchange;
 import com.google.gson.Gson;
 import com.jfoenix.controls.JFXButton;

@@ -3,4 +3,5 @@ JFXTextField{
 }
 JFXButton{
     -fx-background-color: #2a384a;
+    -fx-text-fill: white;
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" maxHeight="800.0" maxWidth="700.0" minHeight="250.0" minWidth="460.0" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<StackPane fx:id="stackPane" maxHeight="800.0" maxWidth="700.0" minHeight="250.0" minWidth="460.0" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
@@ -89,9 +89,9 @@
                         <Insets />
                      </opaqueInsets>
                      <children>
-                        <Label fx:id="titleLabel" text="Cadastro" textAlignment="CENTER" textFill="#10d7c8">
+                        <Label fx:id="titleLabel" text="Cadastro" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Microsoft YaHei" size="35.0" />
+                              <Font name="Microsoft YaHei Bold" size="35.0" />
                            </font>
                         </Label>
                      </children>

@@ -16,6 +16,11 @@
     -fx-font-family: 'Open Sans', sans-serif;
     -fx-font-size: 18px;
 }
+.labelCountProfit{
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+}
 
 .labelMoedas{
     -fx-padding: 0 0 0 15;
@@ -43,17 +48,4 @@ JFXListCell{
     -fx-background-color: #2a384a;
     -fx-border-radius: 5 5 5 5;
     -fx-background-insets: 0 0 5 0;
-}
-
-
-/* Design novo pra treeTableView */
-
-#tvDados{
--fx-background-insets: 5,5,5,5;
-}
-
-.ColumnClass{
--fx-text-fill: #FFF;
--fx-background-insets: 5,5,5,5;
--fx-background-color: #CECECE;
 }
