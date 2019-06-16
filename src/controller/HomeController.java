@@ -131,10 +131,10 @@ public class HomeController implements Initializable {
 
         labelMoneyTotal.setText("$ "+new DecimalFormat("##.##").format(moneyTotal));
         if(moneyTotal-moneyInicial >= 0){
-            labelMoneyLucro.setStyle("-fx-text-fill: green");
+            labelMoneyLucro.setStyle("-fx-text-fill: green;-fx-font-family: 'Roboto';-fx-font-style: italic");
             labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
         }else{
-            labelMoneyLucro.setStyle("-fx-text-fill: red");
+            labelMoneyLucro.setStyle("-fx-text-fill: red;-fx-font-family: 'Roboto';-fx-font-style: italic");
             labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
         }
 

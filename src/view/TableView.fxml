@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="996.0" styleClass="background" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="996.0" styleClass="background" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
    <children>
-      <Pane fx:id="tableView" stylesheets="@Style.css">
+      <Pane fx:id="tableView" stylesheets="@homeStyle.css">
          <children>
-            <TableView fx:id="tvDados" layoutX="7.0" layoutY="71.0" prefHeight="600.0" prefWidth="1000.0" styleClass="table" stylesheets="@Style.css" />
+            <TableView fx:id="tvDados" layoutX="7.0" layoutY="71.0" prefHeight="600.0" prefWidth="1000.0" styleClass="table" stylesheets="@homeStyle.css" />
          </children>
       </Pane>
    </children>

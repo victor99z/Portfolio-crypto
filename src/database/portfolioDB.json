@@ -3,7 +3,7 @@
   "ArrayCoins": [
     {
       "idCoin": "BTC",
-      "buyPrice": 8100,
+      "buyPrice": 80000,
       "qtd": 98.8
     },
     {
@@ -12,11 +12,11 @@
       "qtd": 122
     },{
       "idCoin": "ETH",
-      "buyPrice": 178,
+      "buyPrice": 1789,
       "qtd": 7000
     },{
       "idCoin": "ADA",
-      "buyPrice": 0.8,
+      "buyPrice": 80,
       "qtd": 170000
     }
   ]

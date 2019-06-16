@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="930.0" prefWidth="1039.0" styleClass="MainPaneMoedas" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane prefHeight="930.0" prefWidth="1039.0" styleClass="MainPaneMoedas" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <StackPane prefHeight="930.0" prefWidth="1050.0">
          <children>
@@ -34,9 +34,9 @@
                             <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="355.0" text="Portfolio" GridPane.columnIndex="1" />
-                              <Label fx:id="labelMoneyTotal" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="350.0" styleClass="labelCountMoney" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="labelMoneyLucro" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="68.0" prefWidth="350.0" styleClass="labelCountMoney" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label id="labelCountMoney" fx:id="labelMoneyTotal" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="350.0" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label id="labelCountProfit" fx:id="labelMoneyLucro" alignment="CENTER" contentDisplay="BOTTOM" prefHeight="68.0" prefWidth="350.0" text="\$80000,699" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label id="tituloHome" alignment="CENTER" prefHeight="53.0" prefWidth="355.0" text="Portfolio" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                      </children></Pane>
