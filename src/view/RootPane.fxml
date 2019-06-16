@@ -75,7 +75,7 @@
                                  <children>
                                     <ScrollPane layoutX="113.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
-                                          <FlowPane prefHeight="760.0" prefWidth="885.0">
+                                          <FlowPane alignment="TOP_CENTER" prefHeight="760.0" prefWidth="885.0">
                                              <children>
                                                 <AnchorPane fx:id="containerTabela" maxHeight="500.0" maxWidth="750.0" prefHeight="295.0" prefWidth="260.0" />
                                              </children>

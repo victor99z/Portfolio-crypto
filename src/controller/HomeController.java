@@ -155,6 +155,7 @@ public class HomeController extends ControllerClassType implements Initializable
             for(CoinInfo dt : userCoins.arrayCoins){
                 coinPercentage.put(dt.idCoin, (dt.buyPrice*dt.qtd)/count*100);
             }
+            moneyInicial=count;
             return coinPercentage;
         }else{
             return null;
@@ -211,6 +212,8 @@ public class HomeController extends ControllerClassType implements Initializable
 
     public void coinValueNow(){
         if(getApiData()!= null && getApiData().isDataReady()){
+            moneyTotal=0;
+            vBoxRoot.getChildren().clear();
             for(CoinInfo dt : userCoins.arrayCoins){
                 for(DataExchange dE : getApiData().getDataArray().data){
                     if(dt.idCoin.equals(dE.baseSymbol)){
@@ -223,7 +226,6 @@ public class HomeController extends ControllerClassType implements Initializable
         }
     }
     public void setCoinCells(String nome, Double qtd, Double valorAtual){
-        vBoxRoot.getChildren().removeAll();
         ObservableList<JFXListCell> cellView = FXCollections.observableArrayList();
         JFXListCell cell1 = new JFXListCell<>();
         cell1.setText(" "+nome+" [ "+qtd+" ] = $"+(new DecimalFormat("##.###").format(valorAtual*qtd)));
