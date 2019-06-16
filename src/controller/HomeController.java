@@ -176,7 +176,7 @@ public class HomeController extends ControllerClassType implements Initializable
                         moneyInicial = 0;
                         HashMap<String, Double> structure = CountAllMoney();
                         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-                        if(coinValueNow()){ dataWasSet=true;apiLoadFailedState=true; }else { throw new Exception();}
+                        if(coinValueNow()){ dataWasSet=true;apiLoadFailedState=false; }else { throw new Exception();}
                         if(structure != null){
                             Iterator it = structure.entrySet().iterator();
                             while(it.hasNext()){
@@ -236,10 +236,7 @@ public class HomeController extends ControllerClassType implements Initializable
                     }
                 }
             }
-            if(moneyTotal==0)
-                return false;
-            else
-                return true;
+            return true;
         }else { return false; }
     }
     public void setCoinCells(String nome, Double qtd, Double valorAtual){
