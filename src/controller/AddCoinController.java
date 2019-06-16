@@ -50,7 +50,7 @@ public class AddCoinController extends ControllerClassType{
             });
 
             p.addColumn(0,new Text(String.valueOf(c)+": "));
-            p.addColumn(1,new Text(ci.baseId));
+            p.addColumn(1,new Text(ci.baseSymbol));
             p.addColumn(2,t);
             p.addColumn(3,b);
             c++;

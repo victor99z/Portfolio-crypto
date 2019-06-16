@@ -2,14 +2,24 @@
 
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="tvStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="725.0" styleClass="background" stylesheets="@../src/css/homeStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
+<StackPane fx:id="tvStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="725.0" styleClass="background" stylesheets="@../src/css/homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableViewController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <TableView fx:id="tvDados" prefHeight="600.0" prefWidth="1000.0" styleClass="table" stylesheets="@../src/css/homeStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <TableView fx:id="tvDados" prefHeight="600.0" prefWidth="1000.0" styleClass="table" stylesheets="@../src/css/homeStyle.css" />
          </children>
-      </AnchorPane>
+      </GridPane>
    </children>
 </StackPane>

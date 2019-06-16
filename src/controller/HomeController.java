@@ -43,6 +43,8 @@ public class HomeController extends ControllerClassType implements Initializable
     @FXML
     private Label labelMoneyLucro;
 
+    ObservableList<JFXListCell> cellView;
+
     private double moneyTotal = 0;
     private double moneyInicial = 0;
 
@@ -155,6 +157,7 @@ public class HomeController extends ControllerClassType implements Initializable
             for(CoinInfo dt : userCoins.arrayCoins){
                 coinPercentage.put(dt.idCoin, (dt.buyPrice*dt.qtd)/count*100);
             }
+            moneyInicial = count;
             return coinPercentage;
         }else{
             return null;
@@ -169,6 +172,9 @@ public class HomeController extends ControllerClassType implements Initializable
             public void run() {
                 while(!dataWasSet){
                     try{
+                        moneyTotal = 0;
+                        moneyInicial = 0;
+
                         HashMap<String, Double> structure = CountAllMoney();
                         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
                         coinValueNow();
@@ -191,6 +197,7 @@ public class HomeController extends ControllerClassType implements Initializable
                                 labelMoneyLucro.setStyle("-fx-text-fill: red");
                                 labelMoneyLucro.setText("$ "+new DecimalFormat("##.##").format(moneyTotal-moneyInicial));
                             }
+
                         }else{
                             System.err.println("structure empty");
                             GraficoPizza.setData(pieChartData);
@@ -198,6 +205,7 @@ public class HomeController extends ControllerClassType implements Initializable
                             labelMoneyLucro.setStyle("-fx-text-fill: red");
 
                             sleep(5000);
+
                         }
                     }catch (Exception e){
                         e.printStackTrace();
@@ -211,6 +219,8 @@ public class HomeController extends ControllerClassType implements Initializable
 
     public void coinValueNow(){
         if(getApiData()!= null && getApiData().isDataReady()){
+            moneyTotal = 0;
+            vBoxRoot.getChildren().clear();
             for(CoinInfo dt : userCoins.arrayCoins){
                 for(DataExchange dE : getApiData().getDataArray().data){
                     if(dt.idCoin.equals(dE.baseSymbol)){
@@ -224,7 +234,7 @@ public class HomeController extends ControllerClassType implements Initializable
     }
     public void setCoinCells(String nome, Double qtd, Double valorAtual){
         vBoxRoot.getChildren().removeAll();
-        ObservableList<JFXListCell> cellView = FXCollections.observableArrayList();
+        cellView = FXCollections.observableArrayList();
         JFXListCell cell1 = new JFXListCell<>();
         cell1.setText(" "+nome+" [ "+qtd+" ] = $"+(new DecimalFormat("##.###").format(valorAtual*qtd)));
         cellView.add(cell1);
