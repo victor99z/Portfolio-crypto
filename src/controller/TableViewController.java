@@ -82,7 +82,7 @@ public class TableViewController extends ControllerClassType {
         @Override
         public void run() {
             while(true){
-                if(apiData.isDataReady()){
+                if(apiData != null && apiData.isDataReady()){
                     tvDados.getItems().clear();
                     for(DataExchange dt : apiData.getDataArray().data) {
                         tvDados.getItems().addAll(dt);
@@ -94,7 +94,7 @@ public class TableViewController extends ControllerClassType {
                     }
                 }else{
                     try {
-                        sleep(5000);
+                        sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

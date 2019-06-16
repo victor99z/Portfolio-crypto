@@ -6,14 +6,17 @@ import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import core.UserLogin;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -62,12 +65,31 @@ public class RootPaneController  extends ControllerClassType{
         tabelaController = super.loadFxml(containerTabela,"TableView");
         tabelaController.setParentStackPane(stackPane);
         tabelaController.setParentController(this);
+        tabelaController.setUserData(getUserData());
         tabelaController.setApiData(apiResponseData);
 
         homeController = super.loadFxml(conteinerHome,"home");
         homeController.setParentStackPane(stackPane);
         homeController.setParentController(this);
+        homeController.setUserData(getUserData());
         homeController.setApiData(apiResponseData);
+
+        /*homeController.setScene(conteinerHome.getScene());//Não ta funcionando, por algum motivo
+        homeController.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Roboto%22");*/
+        HomeController hc = (HomeController) homeController;
+
+        Platform.runLater(new Thread(){
+            @Override
+            public void run() {
+                try {
+                    sleep(2000);
+                    hc.setGraficoMoedas();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         /*super.getStage().setOnHidden(event -> {
             System.exit(0);
         });*/

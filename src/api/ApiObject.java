@@ -6,12 +6,11 @@ import javafx.application.Platform;
 public class ApiObject {
 
 
-    public ApiObject(){ }
-
-    public void initialize(){
+    public ApiObject(){
         setUrl("https://api.coincap.io/v2/markets?exchangeId=binance&quoteId=tether&limit=50");
         t1.start();
     }
+
 
     protected DataArray dataArray;
     protected String url;

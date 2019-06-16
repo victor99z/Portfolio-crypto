@@ -1,25 +1,46 @@
-
-.mainPaneMoedas{
-    -fx-font-family: 'Open Sans:700', sans-serif;
+.background{
+    -fx-background-color: #194fa8;
 }
 
-.labelMoedas{
-    -fx-padding: 0 0 0 15;
-    -fx-font-family: 'Open Sans:400', sans-serif;
+.mainPaneMoedas{
+    -fx-font-family: 'Open Sans', sans-serif;
+}
+
+.labelResumo{
+    -fx-font-family: 'Open Sans', sans-serif;
     -fx-font-weight: bold;
     -fx-font-size: 36px;
 }
 
+.labelCountMoney{
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 18px;
+}
+
+.labelMoedas{
+    -fx-padding: 0 0 0 15;
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 36px;
+}
+
+
 .PaneTitulo JFXButton{
     -fx-padding: -5 -5 -5 -5;
+    -fx-background-color: #2a384a;
     -fx-text-fill:white;
     -fx-font-size: 36px;
 }
 .PaneTitulo{
     -fx-border-width: 0 0 0 10;
+    -fx-border-color: #2a384a;
 }
-#labelsIndividual Label{
-    -fx-pref-height: 80;
-    -fx-padding: 0 0 0 10;
-    -fx-border-width: 0 0 0 4;
+
+JFXListCell{
+    -fx-pref-height: 50px;
+    -fx-pref-width: 800px;
+    -fx-text-fill: white;
+    -fx-background-color: #2a384a;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-insets: 0 0 5 0;
 }

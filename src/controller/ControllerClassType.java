@@ -36,10 +36,12 @@ public class ControllerClassType {
     public ControllerClassType getParentController() { return parentController; }
 
 
+    public void setApiData(ApiObject a){ apiResponseData = a;}
+    public ApiObject getApiData() { return apiResponseData; }
+
     public void setUserData(UserLogin info){
         this.userInfo = info;
     }
-
     public UserLogin getUserData() { return userInfo; }
 
     public void setScene(){
@@ -49,9 +51,11 @@ public class ControllerClassType {
             System.err.println("Stage not set!");
         }
     }
-    public void setStage(Stage stage){
-        this.stage =stage;
-        setScene();
+    public Scene getScene() { return scene; }
+
+    public void setStage(Stage stage){ this.stage =stage;setScene(); }
+    public Stage getStage() {
+        return stage;
     }
 
     public void setParentStackPane(StackPane parentStackPane) { parentStackPaneList=new ArrayList<StackPane>();this.parentStackPaneList.add(parentStackPane); }
@@ -64,29 +68,6 @@ public class ControllerClassType {
         changeCSS("../src/css/"+userInfo.getUserInfo().getTheme()+".css");
     }
 
-    ControllerClassType switch_cad(ActionEvent event,StackPane stackPane, String filename,boolean fullscreen){
-        try{
-            Stage stage = (Stage) stackPane.getScene().getWindow();
-            SwitchScene switchScene = new SwitchScene(stage);
-            ControllerClassType c = switchScene.switch_(filename);
-            c.setStage(stage);
-            stage.setFullScreen(fullscreen);
-            return c;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-        //stage.close();
-    }
-
-    //================================
-
-    public void setApiData(ApiObject a){
-        apiResponseData = a;
-    }
-
-    public ApiObject getApiData() { return apiResponseData; }
-    //================================
 
     public void changeCSS(String filename,String removal){
         if(removal.length() > 0) scene.getStylesheets().remove(ControllerClassType.class.getResource(removal).toExternalForm());
@@ -96,10 +77,6 @@ public class ControllerClassType {
     public void changeCSS(String filename){
         if(!scene.getStylesheets().contains(ControllerClassType.class.getResource(filename).toExternalForm()))
             scene.getStylesheets().add(ControllerClassType.class.getResource(filename).toExternalForm());
-    }
-
-    public Stage getStage() {
-        return stage;
     }
 
     void setSceneFullscreen(ActionEvent event, StackPane stackPane, boolean fullscreen){
@@ -132,6 +109,21 @@ public class ControllerClassType {
             return null;
         }
 
+    }
+
+    ControllerClassType switch_cad(ActionEvent event,StackPane stackPane, String filename,boolean fullscreen){
+        try{
+            Stage stage = (Stage) stackPane.getScene().getWindow();
+            SwitchScene switchScene = new SwitchScene(stage);
+            ControllerClassType c = switchScene.switch_(filename);
+            c.setStage(stage);
+            stage.setFullScreen(fullscreen);
+            return c;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        //stage.close();
     }
 
     void MessageDialog(StackPane stackPane,String info,String name){
