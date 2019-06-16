@@ -1,21 +1,17 @@
 package controller;
 
+import api.DataExchange;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import database.CoinInfo;
 import database.UserCoin;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-
-import java.awt.*;
 
 public class AddCoinController extends ControllerClassType{
     @FXML
@@ -23,20 +19,18 @@ public class AddCoinController extends ControllerClassType{
     @FXML
     private StackPane coinStackPane;
 
-    private UserCoin uc;
-    public void setUserCoinObject(UserCoin uc){ this.uc = uc;}
-    public UserCoin getUserCoinObject(){ return uc; }
+    private UserCoin userCoins;
+    public void setUserCoinObject(UserCoin uc){ this.userCoins = uc;}
+    public UserCoin getUserCoinObject(){ return userCoins; }
 
     public void initialize(){ }
-
-
 
 
     public void gridCoinSet(){
         int c=0;
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
 
-        for (CoinInfo ci:uc.ArrayCoins) {
+        for (DataExchange ci:getApiData().getDataArray().data) {
             GridPane p = new GridPane();
 
             JFXTextField t=new JFXTextField();
@@ -46,7 +40,8 @@ public class AddCoinController extends ControllerClassType{
             b.setOnAction(event -> {
                 if(t.getText().length() > 0)
                     try{
-                        ci.qtd+=Integer.valueOf(t.getText());
+                        CoinInfo nc = new CoinInfo(ci.baseSymbol,Double.valueOf(ci.priceUsd),Double.valueOf(t.getText()));
+                        userCoins.addCoin(nc);
                     }catch (Exception e){
                         MessageDialog(coinStackPane,"Quantia inválida","Erro");
                         /*HomeController parentController = (HomeController) getParentController();
@@ -54,8 +49,8 @@ public class AddCoinController extends ControllerClassType{
                     }
             });
 
-            p.addColumn(0,new Text(String.valueOf(c)));
-            p.addColumn(1,new Text(ci.idCoin));
+            p.addColumn(0,new Text(String.valueOf(c)+": "));
+            p.addColumn(1,new Text(ci.baseId));
             p.addColumn(2,t);
             p.addColumn(3,b);
             c++;

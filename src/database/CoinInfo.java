@@ -2,8 +2,14 @@ package database;
 
 public class CoinInfo {
     public String idCoin;
-    public Double buyPrice;
-    public int qtd;
+    public double buyPrice;
+    public double qtd;
+
+    public CoinInfo(String idCoin,double buyPrice,double qtd){
+        this.idCoin=idCoin;
+        this.buyPrice=buyPrice;
+        this.qtd=qtd;
+    }
 
     @Override
     public String toString() {
