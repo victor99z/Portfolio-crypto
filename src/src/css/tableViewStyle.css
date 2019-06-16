@@ -1,0 +1,8 @@
+.ColumnClass{
+    -fx-pref-width: 100;
+}
+
+.table{
+    -fx-text-fill: white;
+    -fx-pref-width: 2000;
+}

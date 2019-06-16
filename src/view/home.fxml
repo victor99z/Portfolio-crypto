@@ -66,7 +66,8 @@
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="650.0" styleClass="PaneTitulo" GridPane.rowIndex="1">
                            <children>
                               <Label contentDisplay="CENTER" layoutX="3.0" layoutY="-4.0" prefHeight="67.0" prefWidth="165.0" styleClass="labelMoedas" text="Moedas" />
-                              <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="582.0" layoutY="11.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="+" />
+                              <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="495.0" layoutY="8.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="+" />
+                        <JFXButton fx:id="btRemoveCoin" buttonType="RAISED" layoutX="569.0" layoutY="8.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="-" />
                            </children>
                         </Pane>
                         <VBox fx:id="vBoxRoot" prefHeight="205.0" prefWidth="650.0" GridPane.rowIndex="2">
