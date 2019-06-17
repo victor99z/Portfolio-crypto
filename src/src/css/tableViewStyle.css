@@ -1,8 +1,8 @@
-.ColumnClass{
-    -fx-pref-width: 100;
+TableCollumn{
+    -fx-pref-width: 150;
+    -fx-text-alignment: center;
 }
 
-.table{
-    -fx-text-fill: white;
-    -fx-pref-width: 2000;
+TableView{
+    -fx-background-color: transparent;
 }
