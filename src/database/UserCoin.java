@@ -21,6 +21,15 @@ public class UserCoin {
                 '}';
     }
 
+    public CoinInfo getCoinBySymbol(String id){
+        for(CoinInfo ci:arrayCoins){
+            if(ci.idCoin.equals(id)){
+                return ci;
+            }
+        }
+        return null;
+    }
+
     public void addCoin(CoinInfo addCoin){
         for(CoinInfo ci:arrayCoins){
             if(ci.idCoin.equals(addCoin.idCoin)){
@@ -39,12 +48,18 @@ public class UserCoin {
                     for(DataExchange de:data){
                         if(de.baseSymbol.equals(sellCoin.idCoin)){
                             for(DataExchange dol:data){
-                                if(dol.baseSymbol.equals("USDT")){
+                                if(dol.baseSymbol.equals("TUSD")){
                                     ci.qtd-=sellCoin.qtd;
-                                    CoinInfo adc = new CoinInfo("USDT",Double.valueOf(dol.priceUsd),sellCoin.qtd*Double.valueOf(de.priceUsd));
+                                    CoinInfo adc = new CoinInfo("TUSD",Double.valueOf(dol.priceUsd),sellCoin.qtd*Double.valueOf(de.priceUsd));
                                     addCoin(adc);
                                     if(ci.qtd ==0)
-                                        deleteCoin(ci);
+                                        try{
+                                            deleteCoin(ci);
+                                            return true;
+                                        }catch (Exception e){
+                                            System.err.println("Coin not removed!!");
+                                            return false;
+                                        }
                                     return true;
                                 }
                             }
@@ -61,28 +76,32 @@ public class UserCoin {
             if(ci.idCoin.equals(wdCoin.idCoin)){
                 if(wdCoin.qtd <= ci.qtd){
                         for(DataExchange dol:data){
-                            if(dol.baseSymbol.equals("USDT")){
+                            if(dol.baseSymbol.equals("TUSD")){
                                 ci.qtd-= wdCoin.qtd*Double.valueOf(dol.priceUsd);
-                                if(ci.qtd ==0)
-                                    try{
-                                        deleteCoin(ci);
+                                System.out.println(ci.qtd);
+                                if(ci.qtd <= 0 ) {
+                                    if(deleteCoin(ci))
                                         return true;
-                                    }catch (Exception e){
-                                        System.err.println("Coin not removed!!");
-                                        return false;
+                                    else{
+                                        System.err.println("Coin not removed!!");return false;
                                     }
+                                }else{
+                                    return true;
+                                }
                             }
                         }
                 }
             }
         }
+        System.out.println("FML");
         return false;
     }
 
-    private boolean deleteCoin(CoinInfo ci) {
+    public boolean deleteCoin(CoinInfo ci) {
         for(int c=0;c < arrayCoins.size();c++){
             if(arrayCoins.get(c).idCoin.equals(ci.idCoin)){
                 arrayCoins.remove(c);
+                System.out.println("Coin removed");
                 return true;
             }
         }

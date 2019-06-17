@@ -234,6 +234,7 @@ public class HomeController extends ControllerClassType implements Initializable
 
     boolean dataWasSet = false;
     boolean apiLoadFailedState =false;
+    public int breakCount=0;
     public void setGraficoMoedas(){
         dataWasSet=false;
         Platform.runLater(new Thread(){
@@ -281,8 +282,14 @@ public class HomeController extends ControllerClassType implements Initializable
                     }catch (Exception e){
                         //e.printStackTrace();
                         try{
-                            if(!apiLoadFailedState){System.err.println("Api load Failed");apiLoadFailedState=true;}
-                            sleep(500);
+                            if(breakCount<4){
+                                if(!apiLoadFailedState){System.err.println("Api load Failed");apiLoadFailedState=true;}
+                                breakCount++;
+                                sleep(500);
+                            }else{
+                                messageDialog(getParentStackPane(),"Conexão não reestabelecida, carregamento automático suspenso temporariamente\n","Falha na conexão");
+                                dataWasSet=true;apiLoadFailedState=true;
+                            }
                         }catch (Exception e2){/*f*/}
                     }
                 }

@@ -22,7 +22,7 @@
             </FlowPane>
          </top>
          <center>
-            <JFXListView fx:id="coinDisplay" styleClass="StyleListViewSemTempoIrmao" BorderPane.alignment="CENTER" />
+            <JFXListView fx:id="coinDisplay" fixedCellSize="90.0" styleClass="StyleListViewSemTempoIrmao" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

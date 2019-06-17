@@ -3,6 +3,7 @@ package controller;
 import api.DataExchange;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 import database.CoinInfo;
 import database.UserCoin;
@@ -32,19 +33,23 @@ public class SellCoinController extends ControllerClassType{
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
         if(getApiData()!= null && getApiData().isDataReady()) {
             for (CoinInfo ci : userCoins.arrayCoins) {
-                GridPane p = new GridPane();
+                if (!ci.idCoin.equals("TUSD")){
+                    GridPane p = new GridPane();
+                    /*JFXTextField t = new JFXTextField();
+                    t.setPromptText("Quantia");*/
+                    JFXSlider t = new JFXSlider();
+                    t.setValue(0);
+                    t.setMax(Math.floor(ci.qtd));
+                    t.setMin(0);
 
-                JFXTextField t = new JFXTextField();
-                t.setPromptText("Quantia");
-                JFXButton b = new JFXButton();
-                b.setText("Vender");
-                b.setOnAction(event -> {
-                    if (t.getText().length() > 0)
+                    JFXButton b = new JFXButton();
+                    b.setText("Vender");
+                    b.setOnAction(event -> {
                         try {
-                            CoinInfo nc = new CoinInfo(ci.idCoin, Double.valueOf(ci.buyPrice), Double.valueOf(t.getText()));
-                            if(userCoins.sellCoin(nc,getApiData().getDataArray().data)){
+                            CoinInfo nc = new CoinInfo(ci.idCoin, Double.valueOf(ci.buyPrice), Double.valueOf(t.getValue()));
+                            if (userCoins.sellCoin(nc, getApiData().getDataArray().data)) {
                                 //feito
-                            }else {
+                            } else {
                                 messageDialog(coinStackPane, "Operação malsucedida", "Erro");
                             }
                         } catch (Exception e) {
@@ -52,15 +57,16 @@ public class SellCoinController extends ControllerClassType{
                         /*HomeController parentController = (HomeController) getParentController();
                         parentController.updateJSON();*/
                         }
-                });
+                    });
 
-                p.setAlignment(Pos.CENTER);
-                p.setHgap(10);
-                p.addColumn(1, new Text(ci.idCoin));
-                p.addColumn(2, t);
-                p.addColumn(3, b);
-                c++;
-                listCoins.add(p);
+                    p.setAlignment(Pos.CENTER);
+                    p.setHgap(10);
+                    p.addColumn(1, new Text(ci.idCoin));
+                    p.addColumn(2, t);
+                    p.addColumn(3, b);
+                    c++;
+                    listCoins.add(p);
+                }
             }
         }
         coinDisplay.setItems(listCoins);
