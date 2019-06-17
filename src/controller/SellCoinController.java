@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
-public class AddCoinController extends ControllerClassType{
+public class SellCoinController extends ControllerClassType{
     @FXML
     private JFXListView<GridPane> coinDisplay;
     @FXML
@@ -31,20 +31,22 @@ public class AddCoinController extends ControllerClassType{
         int c=0;
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
         if(getApiData()!= null && getApiData().isDataReady()) {
-            for (DataExchange ci : getApiData().getDataArray().data) {
+            for (CoinInfo ci : userCoins.arrayCoins) {
                 GridPane p = new GridPane();
 
                 JFXTextField t = new JFXTextField();
                 t.setPromptText("Quantia");
                 JFXButton b = new JFXButton();
-                b.setText("Adicionar");
+                b.setText("Vender");
                 b.setOnAction(event -> {
                     if (t.getText().length() > 0)
                         try {
-                            if (Double.valueOf(t.getText()) > 0){
-                                CoinInfo nc = new CoinInfo(ci.baseSymbol, Double.valueOf(ci.priceUsd), Double.valueOf(t.getText()));
-                                userCoins.addCoin(nc);
-                            }else {throw new Exception(); }
+                            CoinInfo nc = new CoinInfo(ci.idCoin, Double.valueOf(ci.buyPrice), Double.valueOf(t.getText()));
+                            if(userCoins.sellCoin(nc,getApiData().getDataArray().data)){
+                                //feito
+                            }else {
+                                messageDialog(coinStackPane, "Operação malsucedida", "Erro");
+                            }
                         } catch (Exception e) {
                             messageDialog(coinStackPane, "Quantia inválida", "Erro");
                         /*HomeController parentController = (HomeController) getParentController();
@@ -54,7 +56,7 @@ public class AddCoinController extends ControllerClassType{
 
                 p.setAlignment(Pos.CENTER);
                 p.setHgap(10);
-                p.addColumn(1, new Text(ci.baseSymbol));
+                p.addColumn(1, new Text(ci.idCoin));
                 p.addColumn(2, t);
                 p.addColumn(3, b);
                 c++;
