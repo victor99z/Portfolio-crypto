@@ -76,9 +76,9 @@
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="408.0" layoutY="8.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="+">
+                        <JFXButton fx:id="btAddCoin" buttonType="RAISED" layoutX="408.0" layoutY="8.0" onAction="#addCoinPanel" prefHeight="43.0" prefWidth="67.0" text="Comprar">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="15.0" />
                            </font>
                         </JFXButton>
                            </children>

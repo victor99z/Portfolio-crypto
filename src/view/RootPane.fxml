@@ -31,9 +31,9 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ScrollPane prefHeight="545.0" prefWidth="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ScrollPane minHeight="1500.0" prefHeight="545.0" prefWidth="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
-                                          <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="700.0" prefWidth="885.0">
+                                          <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" minHeight="1500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="885.0">
                                              <children>
                                                 <AnchorPane fx:id="conteinerHome" maxHeight="500.0" maxWidth="780.0" prefHeight="500.0" prefWidth="790.0">
                                                    <FlowPane.margin>

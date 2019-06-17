@@ -1,5 +1,3 @@
-package MainPackage;
-
 import animatefx.animation.SlideInDown;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +16,7 @@ public class Main extends Application {
         this.stage = primaryStage ;//pegar o stage
         primaryStage.setTitle("Portfolio");
         stage.getIcons().add(new Image("/src/img/deltaa.png"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loginScreen.fxml")); //carregar a primeira tela
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/loginScreen.fxml")); //carregar a primeira tela
         System.out.println("Iniciando programa ...");
         Parent root = (Parent) loader.load();
         primaryStage.setScene(new Scene(root));
