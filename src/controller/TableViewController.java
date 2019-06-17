@@ -40,22 +40,20 @@ public class TableViewController extends ControllerClassType {
     public void initialize(){
 
         ArrayList<TableColumn> tC = new ArrayList<>();
-        TableColumn<DataExchange, String> col1 = new TableColumn<>("Exchange");
         TableColumn<DataExchange, String> col2 = new TableColumn<>("Rank");
-        TableColumn<DataExchange, String> col3 = new TableColumn<>("Simbolo");
+        TableColumn<DataExchange, String> col3 = new TableColumn<>("Symbol");
         TableColumn<DataExchange, String> col4 = new TableColumn<>("Nome");
         TableColumn<DataExchange, String> col5 = new TableColumn<>("Par");
-        TableColumn<DataExchange, String> col6 = new TableColumn<>("Preço do par");
-        TableColumn<DataExchange, String> col7 = new TableColumn<>("Preço em dólar");
-        TableColumn<DataExchange, String> col8 = new TableColumn<>("Volume da moeda em 24hrs");
-        TableColumn<DataExchange, String> col9 = new TableColumn<>("Volume da Exchange");
-        TableColumn<DataExchange, String> col10 = new TableColumn<>("Qtd. trades");
-        tC.add(col1);tC.add(col2);tC.add(col3);tC.add(col4);tC.add(col5);tC.add(col6);
+        TableColumn<DataExchange, String> col6 = new TableColumn<>("priceQUOTE");
+        TableColumn<DataExchange, String> col7 = new TableColumn<>("priceUSD");
+        TableColumn<DataExchange, String> col8 = new TableColumn<>("VOLUME24HR");
+        TableColumn<DataExchange, String> col9 = new TableColumn<>("ExchangeVolume");
+        TableColumn<DataExchange, String> col10 = new TableColumn<>("TradesCount");
+        tC.add(col2);tC.add(col3);tC.add(col4);tC.add(col5);tC.add(col6);
         tC.add(col7);tC.add(col8);tC.add(col9);tC.add(col10);
         for(TableColumn<DataExchange,String> sp:tC){
-            sp.setStyle("-fx-padding: 0 0 15 0;-fx-pref-width: 150; -fx-text-fill:#2a384a;");
+            sp.getStyleClass().add("ColumnClass");
         }
-        col1.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().exchangeId));
         col2.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().rank));
         col3.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseSymbol));
         col4.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().baseId));
@@ -66,8 +64,7 @@ public class TableViewController extends ControllerClassType {
         col9.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().percentExchangeVolume));
         col10.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().tradesCount24Hr));
 
-        tvDados.setStyle("-fx-pref-width: 1000");
-        tvDados.getColumns().addAll(col1,col2,col3,col4,col5,col6,col7,col8,col9,col10);
+        tvDados.getColumns().addAll(col2,col3,col4,col5,col6,col7,col8,col9,col10);
 
         threadStart();
         /*Thread t = new Thread(tarefaCargaPg);

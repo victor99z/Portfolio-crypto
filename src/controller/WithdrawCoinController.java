@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
-public class AddCoinController extends ControllerClassType{
+public class WithdrawCoinController extends ControllerClassType{
     @FXML
     private JFXListView<GridPane> coinDisplay;
     @FXML
@@ -32,33 +32,36 @@ public class AddCoinController extends ControllerClassType{
         ObservableList<GridPane> listCoins = FXCollections.observableArrayList();
         if(getApiData()!= null && getApiData().isDataReady()) {
             for (DataExchange ci : getApiData().getDataArray().data) {
-                GridPane p = new GridPane();
-
-                JFXTextField t = new JFXTextField();
-                t.setPromptText("Quantia");
-                JFXButton b = new JFXButton();
-                b.setText("Adicionar");
-                b.setOnAction(event -> {
-                    if (t.getText().length() > 0)
-                        try {
-                            if (Double.valueOf(t.getText()) > 0){
+                if(ci.baseSymbol.equals("USDT")){
+                    GridPane p = new GridPane();
+                    JFXTextField t = new JFXTextField();
+                    t.setPromptText("Quantia");
+                    JFXButton b = new JFXButton();
+                    b.setText("Retirar");
+                    b.setOnAction(event -> {
+                        if (t.getText().length() > 0)
+                            try {
                                 CoinInfo nc = new CoinInfo(ci.baseSymbol, Double.valueOf(ci.priceUsd), Double.valueOf(t.getText()));
-                                userCoins.addCoin(nc);
-                            }else {throw new Exception(); }
-                        } catch (Exception e) {
-                            messageDialog(coinStackPane, "Quantia inválida", "Erro");
+                                if(userCoins.withdrawCoin(nc,getApiData().getDataArray().data)){
+                                    //feito
+                                }else {
+                                    messageDialog(coinStackPane, "Operação malsucedida, erro na entrada de dados", "Erro");
+                                }
+                            } catch (Exception e) {
+                                messageDialog(coinStackPane, "Quantia inválida", "Erro");
                         /*HomeController parentController = (HomeController) getParentController();
                         parentController.updateJSON();*/
-                        }
-                });
+                            }
+                    });
 
-                p.setAlignment(Pos.CENTER);
-                p.setHgap(10);
-                p.addColumn(1, new Text(ci.baseSymbol));
-                p.addColumn(2, t);
-                p.addColumn(3, b);
-                c++;
-                listCoins.add(p);
+                    p.setAlignment(Pos.CENTER);
+                    p.setHgap(10);
+                    p.addColumn(1, new Text(ci.baseSymbol));
+                    p.addColumn(2, t);
+                    p.addColumn(3, b);
+                    c++;
+                    listCoins.add(p);
+                }
             }
         }
         coinDisplay.setItems(listCoins);

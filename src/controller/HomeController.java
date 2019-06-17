@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -30,6 +31,12 @@ public class HomeController extends ControllerClassType implements Initializable
     private UserCoin userCoins;
     @FXML
     private PieChart GraficoPizza;
+
+    @FXML
+    private JFXButton btWdCoin;
+
+    @FXML
+    private JFXButton btSellCoin;
 
     @FXML
     private JFXButton btAddCoin;
@@ -63,6 +70,7 @@ public class HomeController extends ControllerClassType implements Initializable
             Scene sc = new Scene(root);
             sc.getStylesheets().add("../src/css/homeStyle.css");
             Stage st = new Stage();
+            st.getIcons().add(new Image("/src/img/coin.png"));
             st.setTitle("Add coins");
             st.setScene(sc);
             st.show();
@@ -82,6 +90,67 @@ public class HomeController extends ControllerClassType implements Initializable
         }
     }
 
+    @FXML
+    void sellCoinPanel(ActionEvent event) {
+        //Vender moedas da conta do usuário
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/sellCoin.fxml"));
+            Parent root = (Parent) loader.load();
+            SellCoinController coinCtr = loader.getController();
+
+            Scene sc = new Scene(root);
+            sc.getStylesheets().add("../src/css/homeStyle.css");
+            Stage st = new Stage();
+            st.getIcons().add(new Image("/src/img/coin.png"));
+            st.setTitle("Sell coins");
+            st.setScene(sc);
+            st.show();
+
+            st.setOnCloseRequest(e -> {
+                updateJSON();
+                setGraficoMoedas();
+            });
+
+            coinCtr.setParentController(this);
+            coinCtr.setUserCoinObject(userCoins);
+            coinCtr.setApiData(this.getApiData());
+
+            coinCtr.gridCoinSet();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void withDrawCoinPanel(ActionEvent event) {
+        //Sacar(Excluir) moedas na conta do usuário
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/withDrawCoin.fxml"));
+            Parent root = (Parent) loader.load();
+            WithdrawCoinController coinCtr = loader.getController();
+
+            Scene sc = new Scene(root);
+            sc.getStylesheets().add("../src/css/homeStyle.css");
+            Stage st = new Stage();
+            st.getIcons().add(new Image("/src/img/coin.png"));
+            st.setTitle("WithDraw coins");
+            st.setScene(sc);
+            st.show();
+
+            st.setOnCloseRequest(e -> {
+                updateJSON();
+                setGraficoMoedas();
+            });
+
+            coinCtr.setParentController(this);
+            coinCtr.setUserCoinObject(userCoins);
+            coinCtr.setApiData(this.getApiData());
+
+            coinCtr.gridCoinSet();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     /*
         Pega os dados do nosso querido arquivo json la em /database/
