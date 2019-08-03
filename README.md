@@ -13,5 +13,5 @@
 + Arrumar a estrutura do projeto
 + Melhorar o diagrama UML
 + Melhor a conexão com a API
-+ Implemntar o BD
++ Implementar o BD
 + etc. 
